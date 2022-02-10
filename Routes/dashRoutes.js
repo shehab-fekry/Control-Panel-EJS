@@ -9,4 +9,6 @@ routes.get('/tracking', dashControllers.getTracking)
 
 routes.get('/driversInfo', dashControllers.getDriversInfo)
 
+routes.get('/addPickPoint', dashControllers.getAddPickPoint)
+
 module.exports = routes;

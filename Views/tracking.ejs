@@ -12,27 +12,27 @@
             <th>Route</th>
         </tr>
 
-        <% busData.forEach(bus=> { %>
+        <% Drivers.forEach(driver => { %>
             <tr>
-                <td><%= bus.id %></td>
-                <td><%= bus.driver %></td>
+                <td><%= driver.id %></td>
+                <td><%= driver.driver %></td>
                 <td>
                     <div class="status"
-                        style="<%= bus.status ? 'background-color: green' : 'background-color: red'%>">
-                        <%= bus.status ? 'active' : 'inactive' %>
+                        style="<%= driver.status ? 'background-color: green' : 'background-color: red'%>">
+                        <%= driver.status ? 'active' : 'inactive' %>
                     </div>
                 </td>
                 <td>
                     <button class="btn btn-warning"
-                        onclick="initPreview('<%= JSON.stringify(bus.wayPoints) %>')">
+                        onclick="initPreview('<%= JSON.stringify(driver.wayPoints) %>')">
                         <img src="../Public/assets/preview.png" width="25px" height="25px">
                         Preview
                     </button>
-                    <button class="btn btn_live <%= bus.status ? 'active' : 'disabled' %>"
-                        onclick="initTrack('<%= JSON.stringify(bus.tracking) %>')">
+                    <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
+                        onclick="initTrack('<%= JSON.stringify(driver.tracking) %>')">
                         <img src="../Public/assets/tracking.png" width="25px" height="25px">
                         Live
-                        <span class="<%= bus.status ? 'live-on' : 'live-off' %>"></span>
+                        <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
                     </button>
                 </td>
             </tr>

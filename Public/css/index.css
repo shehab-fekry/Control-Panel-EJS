@@ -17,7 +17,6 @@
   
 .sideBar .list-group{
   width: 80%;
-  text-align: center;
   font-weight: 500;
   font-size: 15px;
 }
@@ -116,7 +115,7 @@ a{
 /* ------------------------------ Table styling -------------------------------- */
 
 table{
-  height: 45%;
+  max-height: 45%;
   width: 90%;
   font-weight: 500;
   overflow-y: scroll;
