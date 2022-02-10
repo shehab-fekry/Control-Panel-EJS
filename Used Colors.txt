@@ -1,0 +1,6 @@
+
+yellow #ffc107
+
+grey #333
+
+white

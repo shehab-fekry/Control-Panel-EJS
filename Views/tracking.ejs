@@ -1,0 +1,40 @@
+<%- contentFor('body') %>
+
+<div id="map" class="map">
+    <img class="map-img" src="../Public/assets/map-color.png"/>
+</div>
+
+<table>
+        <tr>
+            <th>ID</th>
+            <th>Driver Name</th>
+            <th>Status</th>
+            <th>Route</th>
+        </tr>
+
+        <% (busData.forEach(bus=> ){ %>
+            <tr>
+                <td><%= bus.id %></td>
+                <td><%= bus.driver %></td>
+                <td>
+                    <div class="status"
+                        style="<%= bus.status ? 'background-color: green' : 'background-color: red'%>">
+                        <%= bus.status ? 'active' : 'inactive' %>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-warning"
+                        onclick="initPreview('<%= JSON.stringify(bus.wayPoints) %>')">
+                        <img src="../Public/assets/preview.png" width="25px" height="25px">
+                        Preview
+                    </button>
+                    <button class="btn btn_live <%= bus.status ? 'active' : 'disabled' %>"
+                        onclick="initTrack('<%= JSON.stringify(bus.tracking) %>')">
+                        <img src="../Public/assets/tracking.png" width="25px" height="25px">
+                        Live
+                        <span class="<%= bus.status ? 'live-on' : 'live-off' %>"></span>
+                    </button>
+                </td>
+            </tr>
+        <% }) %>
+</table>
