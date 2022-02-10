@@ -1,40 +1,42 @@
 <%- contentFor('body') %>
 
-<div id="map" class="map">
-    <img class="map-img" src="../Public/assets/map-color.png"/>
-</div>
-
-<table>
-        <tr>
-            <th>ID</th>
-            <th>Driver Name</th>
-            <th>Status</th>
-            <th>Route</th>
-        </tr>
-
-        <% Drivers.forEach(driver => { %>
+<div class="tracking">
+    <div id="map" class="map">
+        <img class="map-img" src="../Public/assets/map-color.png"/>
+    </div>
+    
+    <table>
             <tr>
-                <td><%= driver.id %></td>
-                <td><%= driver.driver %></td>
-                <td>
-                    <div class="status"
-                        style="<%= driver.status ? 'background-color: green' : 'background-color: red'%>">
-                        <%= driver.status ? 'active' : 'inactive' %>
-                    </div>
-                </td>
-                <td>
-                    <button class="btn btn-warning"
-                        onclick="initPreview('<%= JSON.stringify(driver.wayPoints) %>')">
-                        <img src="../Public/assets/preview.png" width="25px" height="25px">
-                        Preview
-                    </button>
-                    <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
-                        onclick="initTrack('<%= JSON.stringify(driver.tracking) %>')">
-                        <img src="../Public/assets/tracking.png" width="25px" height="25px">
-                        Live
-                        <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
-                    </button>
-                </td>
+                <th>ID</th>
+                <th>Driver Name</th>
+                <th>Status</th>
+                <th>Route</th>
             </tr>
-        <% }) %>
-</table>
+    
+            <% Drivers.forEach(driver => { %>
+                <tr>
+                    <td><%= driver.id %></td>
+                    <td><%= driver.driver %></td>
+                    <td>
+                        <div class="status"
+                            style="<%= driver.status ? 'background-color: green' : 'background-color: red'%>">
+                            <%= driver.status ? 'active' : 'inactive' %>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning"
+                            onclick="initPreview('<%= JSON.stringify(driver.wayPoints) %>')">
+                            <img src="../Public/assets/preview.png" width="25px" height="25px">
+                            Preview
+                        </button>
+                        <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
+                            onclick="initTrack('<%= JSON.stringify(driver.tracking) %>')">
+                            <img src="../Public/assets/tracking.png" width="25px" height="25px">
+                            Live
+                            <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
+                        </button>
+                    </td>
+                </tr>
+            <% }) %>
+    </table>
+</div>
