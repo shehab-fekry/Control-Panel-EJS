@@ -17,7 +17,6 @@ server.use("/Public", express.static('public'))
 //server.use(express.static(path.join(__dirname, 'Public')))
 server.use(bodyParser.urlencoded({extended: false}))
 
-// requist
 server.use('/dash', dashRoutes)
 
 server.listen(3000)
