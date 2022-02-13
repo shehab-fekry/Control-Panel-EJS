@@ -1,3 +1,26 @@
-<div>
-    New student to bus
-</div>
+<%- contentFor('body') %>
+
+<div class="pickPoint-wrapper">
+    <h1>Add a new pick-Point to a chosen driver</h1>
+    <form action="/dash/addPickPoint" method="POST">
+
+        <div class="pickPoint-drivers-list">
+            <label for="drivers">Choose a Driver:</label>
+            <select style="height: 30px" name="driverID" id="drivers">
+                <% Drivers.forEach(driver => { %>
+                    <option value="<%= driver.id %>"><%= driver.driver %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="pickPoint-drivers-list">
+            <label for="drivers">Choose a Parent:</label>
+            <select style="height: 30px" name="driverID" id="drivers">
+                <% Drivers.forEach(driver => { %>
+                    <option value="<%= driver.id %>"><%= driver.driver %></option>
+                <% }) %>
+            </select>
+        </div>
+        <input class="pickPoint-submit" type="Submit">
+    </form>
+</div> 

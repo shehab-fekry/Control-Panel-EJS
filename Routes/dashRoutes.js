@@ -7,7 +7,9 @@ routes.get('/', dashControllers.getdash)
 
 routes.get('/tracking', dashControllers.getTracking)
 
-routes.get('/driversInfo', dashControllers.getDriversInfo)
+routes.get('/drivers', dashControllers.getDrivers)
+
+routes.get('/parents', dashControllers.getParents)
 
 routes.get('/addPickPoint', dashControllers.getAddPickPoint)
 

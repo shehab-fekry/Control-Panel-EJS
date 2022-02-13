@@ -12,7 +12,6 @@ const initPreview = (wayPoints) => {
     // getting the authorization for mapBox
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
 
-
     // converting (wayPoints) to JSON format and specifying [start] & [end] points
     const waypts = JSON.parse(wayPoints)
     const start = waypts[0]

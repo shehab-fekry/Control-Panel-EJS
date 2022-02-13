@@ -45,13 +45,30 @@ a{
     width: 75%; 
 }
 
-.tracking{
+.tracking-wrapper{
   width: 100%;
   height: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.pickPoint-wrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.pickPoint-wrapper form{
+  border: 1px solid #333;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ------------------------------- Map divs and styling -------------------------------- */

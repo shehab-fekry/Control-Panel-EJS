@@ -14,8 +14,15 @@ exports.getTracking = (req, res, next) => {
     })
 }
 
-exports.getDriversInfo = (req, res, next) => {
-    res.render('DriversInfo.ejs', {
+exports.getDrivers = (req, res, next) => {
+    res.render('Drivers.ejs', {
+        Drivers: [...data],
+        pageTitle: 'Dashboard'
+    })
+}
+
+exports.getParents = (req, res, next) => {
+    res.render('parents.ejs', {
         Drivers: [...data],
         pageTitle: 'Dashboard'
     })
