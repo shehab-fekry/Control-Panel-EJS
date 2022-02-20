@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link rel="icon" href="../Public/assets/school-bus.png">
+    <link rel="stylesheet" href="../Public/css/Sign.css">
+</head>
+
+<body>
+    <div class="sign_wrapper">
+        <!-- <div class="side_draw"> -->
+            <div class="word">
+                <%= path == 'signup' ? 'SIGN UP' : 'SIGN IN'%>
+            </div>
+        <!-- </div> -->
+        <!-- <div class="side_form"> -->
+            <div class="card">
+                <div class="card_head">
+                    <label><%= path == 'signup' ? 'SIGN UP' : 'SIGN IN'%></label>
+                    <form class="getForm" action="<%= path == 'signup' ? '/dash/signin' : '/dash/signup'%>" method="GET">
+                        <button class="toggle"><%= path == 'signup' ? 'Sign In' : 'Sign Up'%></button>
+                    </form>
+                </div>
+                <form class="postForm" action="/dash" method="GET">
+                    <input type="email" value="" placeholder="Example@gmail.com">
+                    <input type="password" value="" placeholder="**********">
+                    <input type="text" value="" placeholder="Mapbox access token">
+                    <button class="submit" type="submit"><%= path == 'signup' ? 'Sign Up' : 'Sign In'%></button>
+                </form>
+            </div>
+        <!-- </div> -->
+    </div>
+</body>
+</html>

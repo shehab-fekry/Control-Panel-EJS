@@ -13,4 +13,8 @@ routes.get('/parents', dashControllers.getParents)
 
 routes.get('/addPickPoint', dashControllers.getAddPickPoint)
 
+routes.get('/signin', dashControllers.getSignIn)
+
+routes.get('/signup', dashControllers.getSignUp)
+
 module.exports = routes;

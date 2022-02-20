@@ -7,6 +7,15 @@
 let previewMap = {}
 let trackingMap = {}
 
+
+// Enable pusher logging - don't include this in production
+Pusher.logToConsole = true;
+let pusher = new Pusher('d363addb971561dc7e96', {
+    cluster: 'eu'
+});
+let channel = pusher.subscribe('new_notify');
+
+
 const initPreview = (wayPoints) => {
 
     // getting the authorization for mapBox
@@ -32,7 +41,7 @@ const initPreview = (wayPoints) => {
     // Initializing the map 
     previewMap = new mapboxgl.Map({
     container: document.getElementById('map'),
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
     center: start,
     zoom: 10
     });
@@ -163,56 +172,109 @@ const initTrack = (secBySecList) => {
     // Initializing the map 
     trackingMap = new mapboxgl.Map({
         container: document.getElementById('map'),
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
         center: start,
         zoom: 15
         });
 
-    trackingMap.on('load', () => {
+        trackingMap.on('load', () => {
 
-        let prevDiv;
-        let marker;
-        let currentStep;
-        let timeout = 2000
-        waypoints.forEach((point, index) => {
-            setTimeout(() =>{
-
-                // Styling the previous steps
-                if(index !== 0)
-                {
-                    prevDiv = marker.getElement()
-                    prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
-                }
-                
-                // Drawing the current step
-                currentStep = document.createElement('div');
-                currentStep.classList = 'currentStep';
-                marker = new mapboxgl.Marker(currentStep).setLngLat(point).addTo(trackingMap);
-
-                // Drwing the new current step
-                trackingMap.flyTo({
-                    // These options control the ending camera position: centered at
-                    // the target, at zoom level 9, and north up.
-                    center: point,
-                    zoom: 15,
-                    bearing: 0,
-                     
-                    // These options control the flight curve, making it move
-                    // slowly and zoom out almost completely before starting
-                    // to pan.
-                    speed: 0.7, // make the flying slow
-                    curve: 1, // change the speed at which it zooms out
-                     
-                    // This can be any easing function: it takes a number between
-                    // 0 and 1 and returns another number between 0 and 1.
-                    easing: (t) => t,
-                     
-                    // this animation is considered essential with respect to prefers-reduced-motion
-                    essential: true
-                })
-
-            }, timeout )
-            timeout += 2000
+            let prevDiv;
+            let marker;
+            let currentStep;
+            let timeout = 2000
+            waypoints.forEach((point, index) => {
+                setTimeout(() =>{
+        
+                    // Styling the previous steps
+                    if(index !== 0)
+                    {
+                        prevDiv = marker.getElement()
+                        prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+                    }
+                    
+                    // Drawing the current step
+                    currentStep = document.createElement('div');
+                    currentStep.classList = 'currentStep';
+                    marker = new mapboxgl.Marker(currentStep).setLngLat(point).addTo(trackingMap);
+        
+                    // Drwing the new current step
+                    trackingMap.flyTo({
+                        // These options control the ending camera position: centered at
+                        // the target, at zoom level 9, and north up.
+                        center: point,
+                        zoom: 15,
+                        bearing: 0,
+                         
+                        // These options control the flight curve, making it move
+                        // slowly and zoom out almost completely before starting
+                        // to pan.
+                        speed: 0.7, // make the flying slow
+                        curve: 1, // change the speed at which it zooms out
+                         
+                        // This can be any easing function: it takes a number between
+                        // 0 and 1 and returns another number between 0 and 1.
+                        easing: (t) => t,
+                         
+                        // this animation is considered essential with respect to prefers-reduced-motion
+                        essential: true
+                    })
+        
+                }, timeout )
+                timeout += 2000
+            })
         })
-    })
 }
+
+
+
+
+
+
+// trackingMap.on('load', () => {
+
+//     let prevDiv;
+//     let marker;
+//     let currentStep;
+//     let timeout = 2000
+//     waypoints.forEach((point, index) => {
+//         setTimeout(() =>{
+
+//             // Styling the previous steps
+//             if(index !== 0)
+//             {
+//                 prevDiv = marker.getElement()
+//                 prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+//             }
+            
+//             // Drawing the current step
+//             currentStep = document.createElement('div');
+//             currentStep.classList = 'currentStep';
+//             marker = new mapboxgl.Marker(currentStep).setLngLat(point).addTo(trackingMap);
+
+//             // Drwing the new current step
+//             trackingMap.flyTo({
+//                 // These options control the ending camera position: centered at
+//                 // the target, at zoom level 9, and north up.
+//                 center: point,
+//                 zoom: 15,
+//                 bearing: 0,
+                 
+//                 // These options control the flight curve, making it move
+//                 // slowly and zoom out almost completely before starting
+//                 // to pan.
+//                 speed: 0.7, // make the flying slow
+//                 curve: 1, // change the speed at which it zooms out
+                 
+//                 // This can be any easing function: it takes a number between
+//                 // 0 and 1 and returns another number between 0 and 1.
+//                 easing: (t) => t,
+                 
+//                 // this animation is considered essential with respect to prefers-reduced-motion
+//                 essential: true
+//             })
+
+//         }, timeout )
+//         timeout += 2000
+//     })
+// })

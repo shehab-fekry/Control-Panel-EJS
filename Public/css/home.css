@@ -1,0 +1,40 @@
+.home_wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 6px solid #ffc107;
+    background-color: #f8f8f8;
+}
+
+.home_wrapper_draw img{
+    height: 400px;
+    width: 400px;
+}
+
+.home_wrapper_info{
+    width: 70%;
+    text-align: center;
+    margin-top: -150px;
+}
+
+.home_wrapper_info .p_head{
+    font-size: 30px;
+    color: #3f3d56;
+    opacity: 1;
+} 
+
+.home_wrapper_info .p_head span{
+    color: #ffc107;
+} 
+
+.home_wrapper_info hr{
+    color: rgb(185, 184, 184);
+}
+
+.home_wrapper_info div{
+    opacity: 0.6;
+}
+

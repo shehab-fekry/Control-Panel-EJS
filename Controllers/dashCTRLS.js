@@ -24,7 +24,7 @@ exports.getDrivers = (req, res, next) => {
 exports.getParents = (req, res, next) => {
     res.render('parents.ejs', {
         Drivers: [...data],
-        pageTitle: 'Dashboard'
+        pageTitle: 'Dashboard' 
     })
 }
 
@@ -32,6 +32,23 @@ exports.getAddPickPoint = (req, res, next) => {
     res.render('addPickPoint.ejs', {
         Drivers: [...data],
         pageTitle: 'Dashboard'
+    })
+}
+
+exports.getSignIn = (req, res, next) => {
+    res.render('Sign.ejs', {
+        pageTitle: 'Sign In',
+        path: 'signin',
+        layout: 'Sign',
+    })
+}
+
+
+exports.getSignUp = (req, res, next) => {
+    res.render('Sign.ejs', {
+        pageTitle: 'Sign Up',
+        path: 'signup',
+        layout: 'Sign',
     })
 }
 
