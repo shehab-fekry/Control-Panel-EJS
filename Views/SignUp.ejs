@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link rel="icon" href="../Public/assets/school-bus.png">
+    <link rel="stylesheet" href="../Public/css/SignIn.css">
+</head>
+
+<body>
+    <div class="sign_wrapper">
+        <!-- <div class="side_draw"> -->
+            <div class="word">
+                SIGN UP
+            </div>
+        <!-- </div> -->
+        <!-- <div class="side_form"> -->
+            <div class="card">
+                <div class="card_head">
+                    <label>SIGN UP</label>
+                    <form class="getForm" action="/dash/signin" method="GET">
+                        <button class="toggle">Sign In</button>
+                    </form>
+                </div>
+                <form class="postForm" action="/dash" method="GET">
+                    <input class="input_field" type="text"     value="" placeholder="Name">
+                    <input class="input_field" type="email"    value="" placeholder="Example@gmail.com">
+                    <input class="input_field" type="password" value="" placeholder="Password">
+                    <input class="input_field" type="password" value="" placeholder="Confirm Password">
+                    <button class="submit" type="submit">Sign UP</button>
+                </form>
+            </div>
+        <!-- </div> -->
+    </div>
+</body>
+</html>

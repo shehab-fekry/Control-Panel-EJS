@@ -12,7 +12,8 @@ server.set('view engine', 'ejs')
 server.set('views', 'Views')
 
 server.use(expressLayout)
-server.set('layout Sign', false)
+server.set('layout SignIn', false)
+server.set('layout SignUp', false)
 
 server.use(cors())
 server.use("/Public", express.static('public'))

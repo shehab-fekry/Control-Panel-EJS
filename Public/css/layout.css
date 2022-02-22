@@ -1,7 +1,7 @@
 /* ------------------------------ Page Layout -------------------------------- */
 
 .sideBar{
-    background-color: #333;
+    background-color: #212529;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -10,12 +10,51 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: space-evenly;
-    box-shadow: 5px 10px 5px #333, 
+    box-shadow: 0px 0px 10px #212529;
+    z-index: 1; 
   }
-  
+
+  /* ------------------------------ Admin Account -------------------------------- */
+
+.user{
+  display: flex;
+  flex-flow: row;
+  margin-top: 50px;
+  padding: 5px;
+  width: 80%;
+  border-radius: 50px;
+  background-color: rgba(#212529, 0.5);
+  box-shadow: 0px 0px 5px rgb(83, 82, 82);
+  color: #ccc;
+  cursor: pointer;
+}
+
+.user img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px rgb(83, 82, 82);
+  /* background-color: #FFC107; */
+}
+
+.user .img{
+  width: 25%;
+  /* border: 1px solid white; */
+}
+
+.user .info{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items:flex-start;
+  font-size: small;
+  /* border: 1px solid white; */
+}
+
+/* ------------------------------ Navigation -------------------------------- */
   
 .sideBar .list-group{
+  margin-top: 200px;
   width: 80%;
   font-weight: 500;
   font-size: 15px;

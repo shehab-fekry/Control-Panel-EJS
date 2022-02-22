@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link rel="icon" href="../Public/assets/school-bus.png">
+    <link rel="stylesheet" href="../Public/css/SignIn.css">
+</head>
+
+<body>
+    <div class="sign_wrapper">
+        <!-- <div class="side_draw"> -->
+            <div class="word">
+                SIGN IN
+            </div>
+        <!-- </div> -->
+        <!-- <div class="side_form"> -->
+            <div class="card">
+                <div class="card_head">
+                    <label>SIGN IN</label>
+                    <form class="getForm" action="/dash/signup" method="GET">
+                        <button class="toggle">Sign Up</button>
+                    </form>
+                </div>
+                <form class="postForm" action="/dash" method="GET">
+                    <input class="input_field" type="email" value="" placeholder="Example@gmail.com">
+                    <input class="input_field" type="password" value="" placeholder="Password">
+                    <div class="other_input">
+                        <div class="remember">
+                            <input type="checkbox" id="remember" name="remember" value="yes">
+                            <label for="remember">Remember Me</label>    
+                        </div>
+                        <div class="forget">
+                            <a href="/dash/forgetPassword">Forget Password?</a>
+                        </div>
+                    </div>
+                    <button class="submit" type="submit">Sign In</button>
+                </form>
+            </div>
+        <!-- </div> -->
+    </div>
+</body>
+</html>

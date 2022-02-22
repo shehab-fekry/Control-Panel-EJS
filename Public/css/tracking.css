@@ -27,6 +27,9 @@
   
   .status{
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 25px;
     width: 70px;
     border-radius: 50px;
@@ -71,54 +74,59 @@
 
   /* ------------------------------ Table styling -------------------------------- */
 
-table{
+  .table{
+    display: block;
+    display: flex;
+    flex-flow: column;
     max-height: 45%;
     width: 90%;
     font-weight: 500;
     overflow-y: scroll;
-    display: block;
     box-shadow: 0px 0px 8px 3px #ccc;
     border-radius: 5px;
     background-color: white;
   }
   
-  table {
+  .table {
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll; 
   }
   
-  table::-webkit-scrollbar {
+  .table::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
   }
   
   
-  table th{
+  .table .head{
     top: 0px;
     position: sticky;
-    z-index: 1;
     padding: 10px;
+    height: 100%;
+    width: 25%;
     vertical-align: middle;
     text-align: center;
+    font-weight: 700;
     background-color: #FFC107;
     color: #333;
   }
   
-  tbody{
-    width:100%;
-  }
-  
-  tr{
+  .table .roow{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    vertical-align: middle;
-    text-align: center;
+    border: 0px;
   }
   
-  tr:hover{
+  .roow:hover{
     background-color: rgba(255, 196, 0, 0.3);
   }
   
-  td{
+  .tdata{
+    vertical-align: middle;
+    text-align: center;
     width: 25%;
     padding: 2.5px;
   }
@@ -131,12 +139,10 @@ table{
     display: inline-block;
     padding: 10px 10.1px;
     margin: 5px 0px;
-    background-color: white;
-    text-decoration: none;
     font-weight: 700;
+    background-color: white;
     color: #333;
     border-radius: 50px;
-    transition: all .2s;
     border: 2px solid rgb(255, 196, 0, 0.3);
   }
   
@@ -186,7 +192,7 @@ table{
   
   
   @media only screen and (max-width: 500px) {
-    .btn {
+    .btn{
       width: 250px;
     }
     span.live-icon{

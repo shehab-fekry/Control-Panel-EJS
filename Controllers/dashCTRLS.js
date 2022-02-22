@@ -36,19 +36,19 @@ exports.getAddPickPoint = (req, res, next) => {
 }
 
 exports.getSignIn = (req, res, next) => {
-    res.render('Sign.ejs', {
+    res.render('SignIn.ejs', {
+        layout: 'SignIn',
         pageTitle: 'Sign In',
         path: 'signin',
-        layout: 'Sign',
     })
 }
 
 
 exports.getSignUp = (req, res, next) => {
-    res.render('Sign.ejs', {
+    res.render('SignUp.ejs', {
+        layout: 'SignUp',
         pageTitle: 'Sign Up',
         path: 'signup',
-        layout: 'Sign',
     })
 }
 
