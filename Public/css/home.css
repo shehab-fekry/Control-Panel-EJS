@@ -6,7 +6,7 @@
     justify-content: space-evenly;
     align-items: center;
     border-bottom: 6px solid #ffc107;
-    background-color: #f8f8f8;
+    background-color: white;
 }
 
 .home_wrapper_draw img{
@@ -20,21 +20,57 @@
     margin-top: -150px;
 }
 
+
+/* ------------------------------ Typed.js animation -------------------------------- */
+
+
 .home_wrapper_info .p_head{
-    font-size: 30px;
-    color: #3f3d56;
-    opacity: 1;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
 } 
 
-.home_wrapper_info .p_head span{
+.home_wrapper_info .p_head .text{
+    font-size: 30px;
+    font-weight: 800;
+    color: #384850;
+    opacity: 0.9;
+}
+
+.home_wrapper_info .p_head .subtext{
     color: #ffc107;
+    display: inline-block;
 } 
 
 .home_wrapper_info hr{
     color: rgb(185, 184, 184);
 }
 
-.home_wrapper_info div{
-    opacity: 0.6;
-}
+.cursor::after {
+		content: ' ';
+		display: inline;
+		animation: blink 0.7s infinite;
+	}
 
+
+/*Removes cursor that comes with typed.js*/
+.typed-cursor{
+   opacity: 0;
+	display: none;
+}
+/*Custom cursor animation*/
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}

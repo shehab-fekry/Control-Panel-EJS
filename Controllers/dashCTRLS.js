@@ -39,16 +39,19 @@ exports.getSignIn = (req, res, next) => {
     res.render('SignIn.ejs', {
         layout: 'SignIn',
         pageTitle: 'Sign In',
-        path: 'signin',
     })
 }
-
 
 exports.getSignUp = (req, res, next) => {
     res.render('SignUp.ejs', {
         layout: 'SignUp',
         pageTitle: 'Sign Up',
-        path: 'signup',
     })
 }
 
+exports.getForgetPassword = (req, res, next) => {
+    res.render('forgetPass.ejs', {
+        layout: 'forgetPass',
+        pageTitle: 'Forget Password',
+    })
+}

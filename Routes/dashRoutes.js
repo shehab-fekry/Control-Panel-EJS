@@ -17,4 +17,6 @@ routes.get('/signin', dashControllers.getSignIn)
 
 routes.get('/signup', dashControllers.getSignUp)
 
+routes.get('/forgetPassword', dashControllers.getForgetPassword)
+
 module.exports = routes;
