@@ -15,39 +15,107 @@
 }
 
 .home_wrapper_info{
-    width: 70%;
-    text-align: center;
-    margin-top: -150px;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid black; */
 }
+
+.home_wrapper_info .header{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 30%;
+    width: 100%;
+    box-shadow: 0px 0px 10px #ccc;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+} 
+
+.header::before{
+    content: 'Develepors Statement';
+    position:absolute;
+    z-index: 1;
+    margin-top: -180px;
+    margin-left: -550px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 5px #ccc;
+}
+
+/* ------------------------------ Statistics -------------------------------- */
+
+
+.home_wrapper_info .statistics{
+    display: flex;
+    flex-flow: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    /* padding: 70px; */
+    /* border: 1px solid red; */
+}
+
+.drivers, .buses, .parents, .children{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+    text-shadow: 0px 0px 2px #ccc;
+    color: #ffc107;
+    font-size: 30px;
+    font-weight: 800;
+    background-color: #f8f8f8;
+}
+
+#plus{
+    color: #384850;
+}
+
+.drivers::before, .buses::before, .parents::before, .children::before{
+    position:absolute ;
+    z-index: 1;
+    margin-top: -85px;
+    font-size: 25px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 5px #ccc;
+}
+
+.drivers::before{content: 'Drivers'; margin-left: -40px;}
+.buses::before{content: 'Buses'; margin-left: -50px;}
+.parents::before{content: 'Parents'; margin-left: -35px;}
+.children::before{content: 'Children'; margin-left: -25px;}
 
 
 /* ------------------------------ Typed.js animation -------------------------------- */
 
-
-.home_wrapper_info .p_head{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-} 
-
-.home_wrapper_info .p_head .text{
+.home_wrapper_info .header .text{
     font-size: 30px;
     font-weight: 800;
     color: #384850;
-    opacity: 0.9;
+    /* text-shadow: 0px 0px 5px #ccc; */
 }
 
-.home_wrapper_info .p_head .subtext{
+.home_wrapper_info .header .subtext{
     color: #ffc107;
     display: inline-block;
 } 
 
-.home_wrapper_info hr{
-    color: rgb(185, 184, 184);
-}
-
 .cursor::after {
-		content: ' ';
+		content: '|';
 		display: inline;
 		animation: blink 0.7s infinite;
 	}
