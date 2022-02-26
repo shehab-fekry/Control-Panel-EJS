@@ -12,17 +12,33 @@
 
 .map-img{
     position: relative;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
-    width: 200px;
-    height: 200px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 300px;
   }
   
   .map{
     height: 45%;
     width: 90%;
     margin-top: 0px;
-    box-shadow: 0px 1px 8px 3px #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+  }
+
+  .map::before{
+    content: 'Map';
+    position:absolute ;
+    z-index: 1;
+    margin-top: -28px;
+    margin-left: 10px;
+    width:100px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 10px #ccc;
   }
   
   .status{
@@ -31,7 +47,8 @@
     justify-content: center;
     align-items: center;
     height: 25px;
-    width: 70px;
+    width: 75px;
+    padding: 10px;
     border-radius: 50px;
     font-size: 15px;
     color: white;
@@ -68,7 +85,7 @@
     height: 15px;
     border-radius: 50%;
     background-color: #FDBF00 ;
-    border: 2px solid #333;
+    border: 2px solid #384850;
   }
   
 
@@ -82,9 +99,10 @@
     width: 90%;
     font-weight: 500;
     overflow-y: scroll;
-    box-shadow: 0px 0px 8px 3px #ccc;
-    border-radius: 5px;
-    background-color: white;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    color: #384850;
   }
   
   .table {
@@ -97,6 +115,19 @@
     display: none; /* for Chrome, Safari, and Opera */
   }
   
+  .table::before{
+    content: 'Trips';
+    position:absolute ;
+    z-index: 1;
+    margin-top: -27px;
+    margin-left: 10px;
+    width:100px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 10px #ccc;
+  }
   
   .table .head{
     top: 0px;
@@ -106,9 +137,9 @@
     width: 25%;
     vertical-align: middle;
     text-align: center;
-    font-weight: 700;
+    font-weight: 800;
     background-color: #FFC107;
-    color: #333;
+    color: #384850;
   }
   
   .table .roow{
@@ -141,7 +172,7 @@
     margin: 5px 0px;
     font-weight: 700;
     background-color: white;
-    color: #333;
+    color: #384850;
     border-radius: 50px;
     border: 2px solid rgb(255, 196, 0, 0.3);
   }

@@ -1,7 +1,10 @@
 /* ------------------------------ Page Layout -------------------------------- */
+  body{
+    font-family: 'Cera Round Pro', sans-serif;;
+  }
 
 .sideBar{
-    background-color: #212529;
+    background-color: #f8f8f8;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -10,7 +13,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    box-shadow: 0px 0px 10px #212529;
+    box-shadow: 0px 0px 10px #ccc;
     z-index: 1; 
   }
 
@@ -23,9 +26,10 @@
   padding: 5px;
   width: 80%;
   border-radius: 50px;
-  background-color: rgba(#212529, 0.5);
-  box-shadow: 0px 0px 5px rgb(83, 82, 82);
-  color: #ccc;
+  background-color: unset;
+  box-shadow: 0px 0px 10px #ccc;
+  color: #384850;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -33,6 +37,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 3px solid #384850;  
+  background-color: #384850;
   box-shadow: 0px 0px 5px rgb(83, 82, 82);
   /* background-color: #FFC107; */
 }
@@ -56,19 +62,20 @@
 .sideBar .list-group{
   margin-top: 200px;
   width: 80%;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 800;
+  font-size: 16px;
 }
 
 .list-group-item{
-  background-color: white;
-  color: #FFC107;
-  border-left: 5px solid #FFC107;
+  background-color: unset;
+  color: #384850;
+  border: none;
+  border-left: 5px solid #384850;
 }
 
 .list-group-item:hover{
-  background-color: #FFC107;
-  color: white;
+  background-color: white;
+  color: #384850;
 }
 
 a{
