@@ -1,6 +1,7 @@
 
-yellow #ffc107
+color: #ffc107 or #384850;
 
-grey #333
+background-color: #f8f8f8 or white;
 
-white
+box-shadow: 0px 0px 10px #ccc;
+text-shadow: 0px 0px 2px #ccc;

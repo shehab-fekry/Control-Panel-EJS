@@ -8,12 +8,15 @@ const server = express()
 
 const dashRoutes = require('./Routes/dashRoutes')
 
+// Seyying templating Engine
 server.set('view engine', 'ejs')
 server.set('views', 'Views')
 
+// Dashboard Layout
 server.use(expressLayout)
 server.set('layout SignIn', false)
 server.set('layout SignUp', false)
+server.set('layout forgetPass', false)
 
 server.use(cors())
 server.use("/Public", express.static('public'))
