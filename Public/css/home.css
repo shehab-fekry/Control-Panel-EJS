@@ -5,7 +5,7 @@
     flex-flow: column;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom: 6px solid #ffc107;
+    /* border-bottom: 6px solid #ffc107; */
     background-color: white;
 }
 
@@ -42,7 +42,7 @@
     content: 'Develepors Statement';
     position:absolute;
     z-index: 1;
-    margin-top: -180px;
+    margin-top: -135px;
     margin-left: -550px;
     font-size: 30px;
     font-weight: 800;
@@ -68,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 200px;
     height: 80px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #ccc;
@@ -94,10 +94,10 @@
     text-shadow: 0px 0px 5px #ccc;
 }
 
-.drivers::before{content: 'Drivers'; margin-left: -40px;}
-.buses::before{content: 'Buses'; margin-left: -50px;}
-.parents::before{content: 'Parents'; margin-left: -35px;}
-.children::before{content: 'Children'; margin-left: -25px;}
+.drivers::before{content: 'Drivers'; margin-left: -60px;}
+.buses::before{content: 'Buses'; margin-left: -70px;}
+.parents::before{content: 'Parents'; margin-left: -55px;}
+.children::before{content: 'Children'; margin-left: -45px;}
 
 
 /* ------------------------------ Typed.js animation -------------------------------- */
@@ -142,3 +142,6 @@
     50% { opacity:0; }
     100% { opacity:1; }
 }
+
+
+/* -------------------------------------- Chart.js ------------------------------------- */

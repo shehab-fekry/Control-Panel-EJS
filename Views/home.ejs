@@ -1,9 +1,7 @@
 <%- contentFor('body') %>
 
 <div class="home_wrapper">
-    <!-- <div class="home_wrapper_draw"><img src="../Public/assets/progressive_app.svg"></div> -->
     <div class="home_wrapper_info">
-        <!-- <div class="p_head">Welcome To Your <span class="subtext">Dashboard</span>..!</div> -->
         <div class="header">
             <div class="text">
                 <span class="cursor type"></span>
@@ -11,21 +9,13 @@
         </div>
 
         <div class="statistics">
-            <div class="drivers" ><span id="plus">+</span> 43540</div>
-            <div class="buses"   ><span id="plus">+</span>56750</div>
-            <div class="parents" ><span id="plus">+</span>1332</div>
-            <div class="children"><span id="plus">+</span>5633</div>
+            <div class="drivers" ><span id="plus">+</span><span class="counter" data-target="15">0</span></div>
+            <div class="buses"   ><span id="plus">+</span><span class="counter" data-target="27">0</span></div>
+            <div class="parents" ><span id="plus">+</span><span class="counter" data-target="38">0</span></div>
+            <div class="children"><span id="plus">+</span><span class="counter" data-target="73">0<span></div>
         </div>
-
-        <!-- <hr>
-
-        <div>Put your school trips, students, drivers and parents information under your hands control.</div>
-        <div>Ensurance students' safety by tracking your school buses.</div> -->
-        <!-- 
-        <div class="center">
-            <div class="text">
-                <span class="subtext cursor type"></span>
-            </div>
-        </div> -->
     </div>
+
+    <canvas id="myChart" width="450px" height="250px"></canvas>
 </div>
+<script src="../Public/js/home.js"></script>
