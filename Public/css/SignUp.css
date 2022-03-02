@@ -39,13 +39,13 @@ body{
     font-size: 30px;
     font-weight: 800;
     opacity: 0.9;
-    color: #384850;
+    color: #252C4B;
 }
 
 .card_head .toggle{
     padding: 10px;
     border: none;
-    background-color: #384850;
+    background-color: #252C4B;
     color: #fff;
     font-size: small;
     font-weight: bold;
@@ -99,7 +99,6 @@ body{
     background-color: unset;
     outline: none;
 }
-
 
 .other_input{
     width: 70%;
