@@ -5,7 +5,6 @@
     flex-flow: column;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom: 6px solid #ffc107;
     background-color: white;
 }
 
@@ -14,8 +13,8 @@
     width: 400px;
 }
 
-.home_wrapper_info{
-    height: 90%;
+.info_section{
+    height: 50%;
     width: 90%;
     display: flex;
     flex-flow: column;
@@ -24,7 +23,7 @@
     /* border: 1px solid black; */
 }
 
-.home_wrapper_info .header{
+.info_section .typing{
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -32,29 +31,29 @@
     text-align: center;
     height: 30%;
     width: 100%;
-    box-shadow: 0px 0px 10px #ccc;
+    /* box-shadow: 0px 0px 10px #ccc; */
     background-color: #f8f8f8;
     border-radius: 10px;
     /* border: 1px solid black; */
 } 
 
-.header::before{
+/* .typing::before{
     content: 'Develepors Statement';
     position:absolute;
     z-index: 1;
-    margin-top: -180px;
+    margin-top: -110px;
     margin-left: -550px;
     font-size: 30px;
     font-weight: 800;
     color: #384850;
     background-color: unset;
     text-shadow: 0px 0px 5px #ccc;
-}
+} */
 
 /* ------------------------------ Statistics -------------------------------- */
 
 
-.home_wrapper_info .statistics{
+.info_section .statistics{
     display: flex;
     flex-flow: row;
     justify-content:space-between;
@@ -68,10 +67,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 200px;
     height: 80px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #ccc;
+    /* box-shadow: 0px 0px 5px #ccc; */
     text-shadow: 0px 0px 2px #ccc;
     color: #ffc107;
     font-size: 30px;
@@ -80,7 +79,7 @@
 }
 
 #plus{
-    color: #384850;
+    color: #252C4B;
 }
 
 .drivers::before, .buses::before, .parents::before, .children::before{
@@ -94,22 +93,24 @@
     text-shadow: 0px 0px 5px #ccc;
 }
 
-.drivers::before{content: 'Drivers'; margin-left: -40px;}
-.buses::before{content: 'Buses'; margin-left: -50px;}
-.parents::before{content: 'Parents'; margin-left: -35px;}
-.children::before{content: 'Children'; margin-left: -25px;}
+.drivers::before{content: 'Drivers'; margin-left: -60px;}
+.buses::before{content: 'Buses'; margin-left: -70px;}
+.parents::before{content: 'Parents'; margin-left: -55px;}
+.children::before{content: 'Children'; margin-left: -45px;}
+
 
 
 /* ------------------------------ Typed.js animation -------------------------------- */
 
-.home_wrapper_info .header .text{
-    font-size: 30px;
+
+.info_section .typing .text{
+    font-size: 20px;
     font-weight: 800;
     color: #384850;
     /* text-shadow: 0px 0px 5px #ccc; */
 }
 
-.home_wrapper_info .header .subtext{
+.info_section .typing .subtext{
     color: #ffc107;
     display: inline-block;
 } 
@@ -141,4 +142,26 @@
     0% { opacity:1; }
     50% { opacity:0; }
     100% { opacity:1; }
+}
+
+
+/* -------------------------------------- Chart.js ------------------------------------- */
+
+
+.charts_section{
+    width: 90%;
+    display: flex;
+    flex-flow: row;
+    justify-content:space-between;
+    align-items: center;
+    height: 50%;
+    /* border: 1px solid black; */
+}
+
+.charts_section .card{
+    width: 440px;
+    border: none;
+    /* box-shadow: 0px 0px 10px #ccc; */
+    color: #384850;
+    border-radius: 20px;
 }
