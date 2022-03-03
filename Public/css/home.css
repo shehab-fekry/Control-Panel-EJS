@@ -8,11 +8,6 @@
     background-color: white;
 }
 
-.home_wrapper_draw img{
-    height: 400px;
-    width: 400px;
-}
-
 .info_section{
     height: 50%;
     width: 90%;
@@ -29,26 +24,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 30%;
+    height: 80px;
     width: 100%;
-    /* box-shadow: 0px 0px 10px #ccc; */
+    /* box-shadow: 0px 0px 5px #ccc; */
     background-color: #f8f8f8;
     border-radius: 10px;
     /* border: 1px solid black; */
 } 
 
-/* .typing::before{
-    content: 'Develepors Statement';
-    position:absolute;
-    z-index: 1;
-    margin-top: -110px;
-    margin-left: -550px;
-    font-size: 30px;
-    font-weight: 800;
-    color: #384850;
-    background-color: unset;
-    text-shadow: 0px 0px 5px #ccc;
-} */
 
 /* ------------------------------ Statistics -------------------------------- */
 
@@ -56,48 +39,64 @@
 .info_section .statistics{
     display: flex;
     flex-flow: row;
-    justify-content:space-between;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    /* padding: 70px; */
+    border-radius: 10px;
+    background-color: #f8f8f8;
     /* border: 1px solid red; */
+    /* box-shadow: 0px 0px 5px #ccc; */
 }
 
 .drivers, .buses, .parents, .children{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 25%;
     height: 80px;
-    border-radius: 10px;
-    /* box-shadow: 0px 0px 5px #ccc; */
+}
+
+.number{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    height: 70%;
     text-shadow: 0px 0px 2px #ccc;
     color: #ffc107;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 800;
-    background-color: #f8f8f8;
+    /* border: 1px solid black; */
 }
 
 #plus{
     color: #252C4B;
 }
 
-.drivers::before, .buses::before, .parents::before, .children::before{
-    position:absolute ;
-    z-index: 1;
-    margin-top: -85px;
-    font-size: 25px;
-    font-weight: 800;
-    color: #384850;
-    background-color: unset;
-    text-shadow: 0px 0px 5px #ccc;
+.label{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    min-width: 60%;
+    height: 70%;
+    /* border: 1px solid black; */
 }
 
-.drivers::before{content: 'Drivers'; margin-left: -60px;}
-.buses::before{content: 'Buses'; margin-left: -70px;}
-.parents::before{content: 'Parents'; margin-left: -55px;}
-.children::before{content: 'Children'; margin-left: -45px;}
+.label .head{
+    height: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    color: #252C4B;
+    /* border: 1px solid black; */
+}
 
+.label .sublabel{
+    height: 50%;
+    font-size: 15px;
+    color: #252C4B;
+    /* border: 1px solid black; */
+}
 
 
 /* ------------------------------ Typed.js animation -------------------------------- */
@@ -105,15 +104,15 @@
 
 .info_section .typing .text{
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 900;
     color: #384850;
     /* text-shadow: 0px 0px 5px #ccc; */
 }
 
-.info_section .typing .subtext{
+/* .info_section .typing .subtext{
     color: #ffc107;
     display: inline-block;
-} 
+}  */
 
 .cursor::after {
 		content: '|';
@@ -164,4 +163,10 @@
     /* box-shadow: 0px 0px 10px #ccc; */
     color: #384850;
     border-radius: 20px;
+}
+
+.card .card-title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #252C4B;
 }
