@@ -9,11 +9,15 @@ let trackingMap = {}
 
 
 // Enable pusher logging - don't include this in production
-// Pusher.logToConsole = true;
-// let pusher = new Pusher('d363addb971561dc7e96', {
-//     cluster: 'eu'
-// });
-// let channel = pusher.subscribe('new_notify');
+Pusher.logToConsole = true;
+let pusher = new Pusher('d363addb971561dc7e96', {
+    cluster: 'eu'
+});
+let channel = pusher.subscribe('new_notify');
+
+channel.bind("new-price", (data) => {
+    // add new price into the APPL widget
+  });
 
 
 const initPreview = (wayPoints) => {

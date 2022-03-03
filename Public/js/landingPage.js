@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function(){
         "<small>Ensure students' safety by tracking your school buses.</small>"],
         stringsElement: null,
         // typing speed
-        typeSpeed: 60,
+        typeSpeed: 40,
         // time before typing starts
         startDelay: 600,
         // backspacing speed
-        backSpeed: 20,
+        backSpeed: 10,
         // time before backspacing
         backDelay: 2000,
         // loop
@@ -65,13 +65,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // ------------------------------------------- Chart.js --------------------------------------------------
 
 
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-
+// const ctx3 = document.getElementById('barChart');
+//                 const barChart = new Chart(ctx3, {
+//                     type: 'bar',
+//                     data: {
+//                         labels: ['trips','drivers', 'parents','children'],
+//                         datasets: [{
+//                           label: 'My First Dataset',
+//                           data: [65, 59, 80, 81],
+//                           backgroundColor: [
+//                             'rgba(255, 99, 132, 0.2)',
+//                             'rgba(255, 159, 64, 0.2)',
+//                             'rgba(255, 205, 86, 0.2)',
+//                             'rgba(75, 192, 192, 0.2)',
+//                           ],
+//                           borderColor: [
+//                             'rgb(255, 99, 132)',
+//                             'rgb(255, 159, 64)',
+//                             'rgb(255, 205, 86)',
+//                             'rgb(75, 192, 192)',
+//                           ],
+//                           borderWidth: 1
+//                         }],
+//                     }
+//             });
 
 const ctx1 = document.getElementById('pieChart');
     const pieChart = new Chart(ctx1, {
