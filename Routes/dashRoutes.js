@@ -5,6 +5,8 @@ const dashControllers = require('../Controllers/dashCTRLS')
 
 routes.get('/', dashControllers.getdash)
 
+routes.get('/landing', dashControllers.getlanding)
+
 routes.get('/tracking', dashControllers.getTracking)
 
 routes.get('/drivers', dashControllers.getDrivers)
