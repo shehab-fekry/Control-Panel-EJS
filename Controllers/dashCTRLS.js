@@ -1,7 +1,7 @@
 let data = require('../Drivers.json')
 
 exports.getdash = (req, res, next) => {
-    res.render('home.ejs', {
+    res.render('landingPage.ejs', {
         Drivers: [...data],
         pageTitle: 'Dashboard'
     })
