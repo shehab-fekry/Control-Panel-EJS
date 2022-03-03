@@ -4,8 +4,8 @@
 
 document.addEventListener('DOMContentLoaded', function(){
     let type = new Typed('.type', {
-        strings: ["...",
-        "Welcome Aboard Your <span class='subtext'>Dash</span>..!",
+        strings: [
+        "Welcome Aboard Your <span class='subtext'>Dash</span>!",
         "<small>Put your school <span class='subtext'>trips</span>, <span class='subtext'>students</span>, <span class='subtext'>drivers</span> and <span class='subtext'>parents</span> information under your hands control.</small>",
         "<small>Ensure students' safety by tracking your school buses.</small>"],
         stringsElement: null,
