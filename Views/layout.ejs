@@ -23,11 +23,20 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
     <!--  Pusher   -->
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <!-- Chart.js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <!-- Typed.js  -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <!--   Axios   -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
     <div class="sideBar">
-
         <div class="user" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
             <div class="img"><img src="../Public/assets/manager.png"></div>
             <div class="info">
@@ -59,49 +68,8 @@
         <%- body %>
     </div>
 
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-    <!--   Axios   -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
     <!-- index.js  -->
     <script src="/Public/js/index.js"></script>
-    <!-- home.js  -->
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script>
-            document.addEventListener('DOMContentLoaded', function(){
-            let type = new Typed('.type', {
-                strings: ["...",
-                "Welcome Aboard Your <span class='subtext'>Dash</span>..!",
-                "<small>Put your school <span class='subtext'>trips</span>, <span class='subtext'>students</span>, <span class='subtext'>drivers</span> and <span class='subtext'>parents</span> information under your hands control.</small>",
-                "<small>Ensure students' safety by tracking your school buses.</small>"],
-                stringsElement: null,
-                // typing speed
-                typeSpeed: 60,
-                // time before typing starts
-                startDelay: 600,
-                // backspacing speed
-                backSpeed: 20,
-                // time before backspacing
-                backDelay: 2000,
-                // loop
-                loop: true,
-                // false = infinite
-                // loopCount: 1,
-                // show cursor
-                showCursor: false,
-                // character for cursor
-                cursorChar: "|",
-                // attribute to type (null == text)
-                attr: null,
-                // either html or text
-                contentType: 'html',
-            });
-        });
-
-        
-    </script>
 </body>
 </html>

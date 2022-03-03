@@ -1,14 +1,11 @@
 *{
-    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     
     
 }
-.header{
-    height: 20px;
-}
+
 .container{
     overflow: scroll;
     background-color: rgb(255, 187, 0);

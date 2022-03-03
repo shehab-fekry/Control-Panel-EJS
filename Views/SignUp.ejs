@@ -92,8 +92,6 @@
         }
 
 
-
-
         validation = () =>{
             const nameCheck = /^[A-Za-z. ]{5,20}$/
             // letters (capital or small), dott, space
@@ -115,36 +113,44 @@
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confPassword').value;
 
-            if(nameCheck.test(username)){
-                document.getElementById('username').style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)'
-                document.getElementById('nameInvalid').innerHTML = ''
+            if(nameCheck.test(username))
+            {
+                document.getElementById('username').style.borderBottom = '2px solid limegreen'
+                document.getElementById('nameInvalid').innerHTML 
+                = '<div style="padding:2px; font-size:12px; color:limegreen; margin-left:21px">Looks good!</div>'
             } else {
                 document.getElementById('username').style.borderBottom = '2px solid red'
                 document.getElementById('nameInvalid').innerHTML 
                 = '<div style="padding:2px; font-size:12px; color:red; margin-left:21px">Invalid Input</div>'
             }
 
-            if(emailCheck.test(email)){
-                document.getElementById('email').style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)'
-                document.getElementById('emailInvalid').innerHTML = ''
+            if(emailCheck.test(email))
+            {
+                document.getElementById('email').style.borderBottom = '2px solid limegreen'
+                document.getElementById('emailInvalid').innerHTML 
+                = '<div style="padding:2px; font-size:12px; color:limegreen; margin-left:21px">Looks good!</div>'
             } else {
                 document.getElementById('email').style.borderBottom = '2px solid red'
                 document.getElementById('emailInvalid').innerHTML 
                 = '<div style="padding:2px; font-size:12px; color:red; margin-left:21px">Invalid Input</div>'
             }
 
-            if(passwordCheck.test(password)){
-                document.getElementById('username').style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)'
-                document.getElementById('passInvalid').innerHTML = ''
+            if(passwordCheck.test(password))
+            {
+                document.getElementById('username').style.borderBottom = '2px solid limegreen'
+                document.getElementById('passInvalid').innerHTML 
+                = '<div style="padding:2px; font-size:12px; color:limegreen; margin-left:21px">Looks good!</div>'
             } else {
                 document.getElementById('password').style.borderBottom = '2px solid red'
                 document.getElementById('passInvalid').innerHTML 
                 = '<div style="padding:2px; font-size:12px; color:red; margin-left:21px">Invalid Input</div>'
             }
 
-            if(passwordCheck.test(password) && (password === confirmPassword)){
-                document.getElementById('username').style.borderBottom = '1px solid rgba(0, 0, 0, 0.5)'
-                document.getElementById('confPassInvalid').innerHTML = ''
+            if(passwordCheck.test(password) && (password === confirmPassword))
+            {
+                document.getElementById('username').style.borderBottom = '2px solid limegreen'
+                document.getElementById('confPassInvalid').innerHTML 
+                = '<div style="padding:2px; font-size:12px; color:limegreen; margin-left:21px">Looks good!</div>'
             } else {
                 document.getElementById('confPassword').style.borderBottom = '2px solid red'
                 document.getElementById('confPassInvalid').innerHTML 
