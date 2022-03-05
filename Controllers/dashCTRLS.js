@@ -62,3 +62,38 @@ exports.getForgetPassword = (req, res, next) => {
         pageTitle: 'Forget Password',
     })
 }
+
+exports.getnewPassword = (req, res, next) => {
+    res.render('newPassword.ejs', {
+        layout: 'newPassword',
+        pageTitle: 'Forget Password',
+    })
+}
+
+exports.getupdateDriver = (req, res, next) => {
+    res.render('updateDriver.ejs', {
+        layout: 'updateDriver',
+        pageTitle: 'Forget Password',
+    })
+}
+
+exports.getaddDriver = (req, res, next) => {
+    res.render('addDriver.ejs', {
+        layout: 'addDriver',
+        pageTitle: 'Forget Password',
+    })
+}
+
+exports.getupdateParent = (req, res, next) => {
+    res.render('updateParent.ejs', {
+        layout: 'updateParent',
+        pageTitle: 'Forget Password',
+    })
+}
+
+exports.getaddParent = (req, res, next) => {
+    res.render('addParent.ejs', {
+        layout: 'addParent',
+        pageTitle: 'Forget Password',
+    })
+}

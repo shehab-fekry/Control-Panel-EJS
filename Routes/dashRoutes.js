@@ -21,4 +21,15 @@ routes.get('/signup', dashControllers.getSignUp)
 
 routes.get('/forgetPassword', dashControllers.getForgetPassword)
 
+routes.get('/newPassword', dashControllers.getnewPassword)
+
+routes.get('/updateDriver', dashControllers.getupdateDriver)
+
+routes.get('/addDriver', dashControllers.getaddDriver)
+
+routes.get('/updateParent', dashControllers.getupdateParent)
+
+routes.get('/addParent', dashControllers.getaddParent)
+
+
 module.exports = routes;

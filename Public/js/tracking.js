@@ -4,33 +4,79 @@
 // ?access_token=pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw
 // &geometries=geojson&approaches=curb;curb;curb;curb;curb&steps=true&overview=full
 
-let previewMap = {}
-let trackingMap = {}
+let state = {
+    previewMap: {},
+    trackingMap: {},
+    prevDiv: {},
+    marker: {},
+    currentStep: {},
+    mapLoaded: false,
+}
 
 
-// Enable pusher logging - don't include this in production
-Pusher.logToConsole = true;
-let pusher = new Pusher('d363addb971561dc7e96', {
-    cluster: 'eu'
-});
+// Creating Pusher channel connection
+Pusher.logToConsole = false;
+let pusher = new Pusher('d363addb971561dc7e96', {cluster: 'eu'});
 let channel = pusher.subscribe('new_notify');
+channel.bind('Gizawy', function(data) {
+    if (!state.mapLoaded) return
+    
+    let langLong = [data.latitude, data.longitude]
+    let index = data.index
 
-channel.bind("new-price", (data) => {
-    // add new price into the APPL widget
-  });
+    // Styling the previous steps
+    if(index !== 0)
+    {
+        state.prevDiv = state.marker.getElement()
+        state.prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+    }
+    
+    // Drawing the current step
+    state.currentStep = document.createElement('div');
+    state.currentStep.classList = 'currentStep';
+    state.marker = new mapboxgl.Marker(state.currentStep).setLngLat(langLong).addTo(state.trackingMap);
+
+    // Drwing the new current step
+    state.trackingMap.flyTo({
+        // These options control the ending camera position: centered at
+        // the target, at zoom level 9, and north up.
+        center: langLong,
+        zoom: 15,
+        bearing: 0,
+         
+        // These options control the flight curve, making it move
+        // slowly and zoom out almost completely before starting
+        // to pan.
+        speed: 0.7, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+         
+        // This can be any easing function: it takes a number between
+        // 0 and 1 and returns another number between 0 and 1.
+        easing: (t) => t,
+         
+        // this animation is considered essential with respect to prefers-reduced-motion
+        essential: true
+    })
+
+});
+
+
+
+
+
+
+
+
+
 
 
 const initPreview = (wayPoints) => {
-
-    // getting the authorization for mapBox
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
-
     // converting (wayPoints) to JSON format and specifying [start] & [end] points
     const waypts = JSON.parse(wayPoints)
     const start = waypts[0]
     const end = waypts[waypts.length-1]
     
-
+    
     // converting (wayPoints) to string and repeating (curb;) as many as wayPoints for API porposes
     let wayPointString = ''
     let curbString = ''
@@ -40,19 +86,20 @@ const initPreview = (wayPoints) => {
     })
     wayPointString = wayPointString.slice(0, -1);
     curbString = curbString.slice(0, -1)
-
-
+    
+    
     // Initializing the map 
-    previewMap = new mapboxgl.Map({
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
+    state.previewMap = new mapboxgl.Map({
     container: document.getElementById('map'),
     style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
     center: start,
     zoom: 10
     });
 
-    // adding controls
-    previewMap.addControl(new mapboxgl.FullscreenControl());
-    previewMap.addControl(new mapboxgl.NavigationControl());
+    // Adding controls
+    state.previewMap.addControl(new mapboxgl.FullscreenControl());
+    state.previewMap.addControl(new mapboxgl.NavigationControl());
 
 
     // Popups and Markers
@@ -62,26 +109,26 @@ const initPreview = (wayPoints) => {
         {
             popup = new mapboxgl.Popup()
             .setHTML('<strong>School</strong>')
-            .addTo(previewMap);
+            .addTo(state.previewMap);
 
             marker = document.createElement('div');
             marker.classList = 'school';
-            new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(previewMap);
+            new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(state.previewMap);
         } else {
             popup = new mapboxgl.Popup()
-            .setHTML('<strong>Student Pick Point</strong>')
-            .addTo(previewMap);
+            .setHTML('<strong>Student Pick Point</strong><ul><li>child1</li><li>child2</li><li>child3</li></ul>')
+            .addTo(state.previewMap);
 
             marker = document.createElement('div');
             marker.classList = 'pickPoint';
-            new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(previewMap);
+            new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(state.previewMap);
         }
     }
 
 
     // setting up routes and layers
-    previewMap.on('load', () => {
-        previewMap.addSource('route', {
+    state.previewMap.on('load', () => {
+        state.previewMap.addSource('route', {
             type: 'geojson',
             data: {
                 type: 'FeatureCollection',
@@ -89,7 +136,7 @@ const initPreview = (wayPoints) => {
             }
           });
           
-          previewMap.addLayer(
+        state.previewMap.addLayer(
             {
               id: 'routeline-active',
               type: 'line',
@@ -106,7 +153,7 @@ const initPreview = (wayPoints) => {
             'waterway-label'
           );
 
-          previewMap.addLayer({
+        state.previewMap.addLayer({
                 id: 'routeArrows',
                 type: 'symbol',
                 source: 'route',
@@ -158,8 +205,13 @@ const setRouteLine = (trips) => {
         }]
     }
 
-    previewMap.getSource('route').setData(routeLine)
+    state.previewMap.getSource('route').setData(routeLine)
 }
+
+
+
+
+
 
 
 
@@ -168,75 +220,110 @@ const setRouteLine = (trips) => {
 
 
 
-const initTrack = (secBySecList) => {
-
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
-
-    const waypoints = JSON.parse(secBySecList)
-    //console.log(waypoints)
-    const start = waypoints[0]
-    const end = waypoints[waypoints.length-1]
-
+const initTrack = (wayPoints) => {
+    state.mapLoaded = false
+    
+    // converting (wayPoints) to JSON format and specifying [start] & [end] points
+    const waypts = JSON.parse(wayPoints)
+    const start = waypts[0]
+    const end = waypts[waypts.length-1]
+    
     // Initializing the map 
-    trackingMap = new mapboxgl.Map({
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
+    state.trackingMap = new mapboxgl.Map({
         container: document.getElementById('map'),
         style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
         center: start,
-        // pitch: 60, // pitch in degrees
-        // bearing: -60, // bearing in degrees
+        pitch: 60, // pitch in degrees
+        bearing: -60, // bearing in degrees
         zoom: 15
         });
 
     // adding controls
-    trackingMap.addControl(new mapboxgl.FullscreenControl());
-    trackingMap.addControl(new mapboxgl.NavigationControl());
+    state.trackingMap.addControl(new mapboxgl.FullscreenControl());
+    state.trackingMap.addControl(new mapboxgl.NavigationControl());
 
 
-        trackingMap.on('load', () => {
-
-            let prevDiv;
-            let marker;
-            let currentStep;
-            let timeout = 2000
-            waypoints.forEach((point, index) => {
-                setTimeout(() =>{
-        
-                    // Styling the previous steps
-                    if(index !== 0)
-                    {
-                        prevDiv = marker.getElement()
-                        prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
-                    }
-                    
-                    // Drawing the current step
-                    currentStep = document.createElement('div');
-                    currentStep.classList = 'currentStep';
-                    marker = new mapboxgl.Marker(currentStep).setLngLat(point).addTo(trackingMap);
-        
-                    // Drwing the new current step
-                    trackingMap.flyTo({
-                        // These options control the ending camera position: centered at
-                        // the target, at zoom level 9, and north up.
-                        center: point,
-                        zoom: 15,
-                        bearing: 0,
-                         
-                        // These options control the flight curve, making it move
-                        // slowly and zoom out almost completely before starting
-                        // to pan.
-                        speed: 0.7, // make the flying slow
-                        curve: 1, // change the speed at which it zooms out
-                         
-                        // This can be any easing function: it takes a number between
-                        // 0 and 1 and returns another number between 0 and 1.
-                        easing: (t) => t,
-                         
-                        // this animation is considered essential with respect to prefers-reduced-motion
-                        essential: true
-                    })
-        
-                }, timeout )
-                timeout += 2000
-            })
-        })
+    state.trackingMap.on('load', () => {
+        state.mapLoaded = true
+    })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// trackingMap.on('load', () => {
+
+//     let prevDiv;
+//     let marker;
+//     let currentStep;
+//     let timeout = 2000
+//     waypoints.forEach((point, index) => {
+//         setTimeout(() =>{
+
+//             // Styling the previous steps
+//             if(index !== 0)
+//             {
+//                 prevDiv = marker.getElement()
+//                 prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+//             }
+            
+//             // Drawing the current step
+//             currentStep = document.createElement('div');
+//             currentStep.classList = 'currentStep';
+//             marker = new mapboxgl.Marker(currentStep).setLngLat(point).addTo(trackingMap);
+
+//             // Drwing the new current step
+//             trackingMap.flyTo({
+//                 // These options control the ending camera position: centered at
+//                 // the target, at zoom level 9, and north up.
+//                 center: point,
+//                 zoom: 15,
+//                 bearing: 0,
+                 
+//                 // These options control the flight curve, making it move
+//                 // slowly and zoom out almost completely before starting
+//                 // to pan.
+//                 speed: 0.7, // make the flying slow
+//                 curve: 1, // change the speed at which it zooms out
+                 
+//                 // This can be any easing function: it takes a number between
+//                 // 0 and 1 and returns another number between 0 and 1.
+//                 easing: (t) => t,
+                 
+//                 // this animation is considered essential with respect to prefers-reduced-motion
+//                 essential: true
+//             })
+
+//         }, timeout )
+//         timeout += 2000
+//     })
+// })
