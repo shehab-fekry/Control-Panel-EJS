@@ -4,13 +4,15 @@
     <div id="map" class="map">
         <img class="map-img" src="../Public/assets/tracking2.svg"/>
     </div>
+
+    <!-- <div id="pusher" style="border: 1px solid black"></div> -->
     
         <div class="table">
-            <div class="roow">
-                <div class="head">#</div>
-                <div class="head">Driver Name</div>
-                <div class="head">Status</div>
-                <div class="head">Route</div>
+            <div class="roow head_row">
+                <div class="head_data">#</div>
+                <div class="head_data">Driver Name</div>
+                <div class="head_data">Status</div>
+                <div class="head_data">Route</div>
             </div>
     
             <% Drivers.forEach(driver => { %>
@@ -24,17 +26,23 @@
                         </div>
                     </div>
                     <div class="tdata">
+                        <!-- <button onclick="dataFetching('<%= JSON.stringify(driver.tracking) %>')">send data</button> -->
                         <button class="btn"
                             onclick="initPreview('<%= JSON.stringify(driver.wayPoints) %>')">
                             <img src="../Public/assets/preview.png" width="25px" height="25px">
                             Preview
                         </button>
                         <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
-                            onclick="initTrack('<%= JSON.stringify(driver.tracking) %>')">
+                            onclick="initTrack('<%= JSON.stringify(driver.wayPoints) %>')">
                             <img src="../Public/assets/tracking.png" width="25px" height="25px">
                             Live
                             <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
                         </button>
+                        <!-- <a class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>" href="/dash/tracking/<%= driver.id%>">
+                            <img src="../Public/assets/tracking.png" width="25px" height="25px">
+                            Live
+                            <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
+                        </a> -->
                     </div>
                 </div>
             <% }) %>

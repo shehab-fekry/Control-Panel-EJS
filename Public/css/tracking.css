@@ -95,7 +95,7 @@
     display: block;
     display: flex;
     flex-flow: column;
-    max-height: 45%;
+    max-height: 40%;
     width: 90%;
     font-weight: 500;
     overflow-y: scroll;
@@ -118,7 +118,7 @@
   .table::before{
     content: 'Trips';
     position:absolute ;
-    z-index: 1;
+    z-index: 2;
     margin-top: -27px;
     margin-left: 10px;
     width:100px;
@@ -128,10 +128,14 @@
     background-color: unset;
     text-shadow: 0px 0px 10px #ccc;
   }
-  
-  .table .head{
+
+  .table .head_row{
     top: 0px;
     position: sticky;
+    z-index: 1;
+  }
+  
+  .table .head_data{
     padding: 10px;
     height: 100%;
     width: 25%;
@@ -154,6 +158,7 @@
   .roow:hover{
     background-color: rgba(255, 196, 0, 0.3);
   }
+  .roow:hover .btn, .roow.hover .btn { background: #f8f8f8}
   
   .tdata{
     vertical-align: middle;
