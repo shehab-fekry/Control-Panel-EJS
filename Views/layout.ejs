@@ -1,8 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         <%= pageTitle %>
@@ -20,6 +18,8 @@
     <link href="/Public/css/Drivers.css" rel="stylesheet">
     <link href="/Public/css/Parents.css" rel="stylesheet">
     <link href="/Public/css/addPickPoint.css" rel="stylesheet">
+
+
     <!--   mapbox  -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
@@ -35,39 +35,86 @@
             crossorigin="anonymous"></script>
     <!--   Axios   -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://use.fontawesome.com/e8ca812c5b.js"></script>
+
 </head>
 
 <body>
     <div class="sideBar">
-        <div class="user" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-            <div class="img"><img src="../Public/assets/manager.png"></div>
-            <div class="info">
-                <div class="name">Shehab Fekry</div>
-                <div class="email">shehabeddin99@gmail.com</div>
+
+          
+
+        <div class="top-side-bar">
+            <div class="notification-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                <i class="fa fa-bell"></i>
+            </div>
+    
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasTopLabel">Notification Panel</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="info_section"></div>
+                <div class="info_section"></div>
+            </div>
+            </div>
+
+            <div class="sidebar-user">
+                <img src="../Public/assets/manager.png" class="sidebar-img">
+                <h2> Yousef Alhaj </h3>
+                <h4> Frontend Developer </h4>
+               
             </div>
         </div>
 
-        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasTopLabel">Administrator Panel</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="info_section"></div>
-            <div class="info_section"></div>
-        </div>
-        </div>
-
         <ul class="list-group">
-            <a href="/dash/tracking"><li class="list-group-item mt-2">Trip Tracking</li></a>
-            <a href="/dash/addPickPoint"><li class="list-group-item mt-2">Add a Pick-Point</li></a>
-            <a href="/dash/drivers"><li class="list-group-item mt-2">Drivers</li></a>
-            <a href="/dash/parents"><li class="list-group-item mt-2">Parents</li></a>
+            <a href="/dash/tracking">     
+                <li class="list-group-item mt-2"><i class="fa fa-bus" aria-hidden="true"></i> &nbsp; Trip Tracking</li>
+            </a>
+            <a href="/dash/addPickPoint"><li class="list-group-item mt-2"><i class="fa fa-map"></i> &nbsp;Add a Pick-Point</li></a>
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-1" aria-expanded="false">
+                <i class="fa fa-id-card"></i> &nbsp;Drivers</li>
+                <div class="collapse" id="dashboard-collapse-1">
+                    <ul class="btn-toggle-nav list-unstyled">
+                        <li><a href="/dash/drivers" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Show Drivers</a></li>
+                        <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Add New Driver</a></li>
+                    </ul>
+                </div>
+            </a>
+
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-2" aria-expanded="false">
+                <i class="fa fa fa-users"></i> &nbsp;Parents</li>
+                <div class="collapse" id="dashboard-collapse-2">
+                    <ul class="btn-toggle-nav list-unstyled">
+                        <li><a href="/dash/parents" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Show Parents</a></li>
+                        <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Add New Parent</a></li>
+                    </ul>
+                </div>
+            </a>
+
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-3" aria-expanded="false">
+                <i class="fa fa-user-circle"></i> &nbsp;Profile </li>  
+                <div class="collapse" id="dashboard-collapse-3">
+                  <ul class="btn-toggle-nav list-unstyled">
+                    <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Edit Profile</a></li>
+                    <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Logout</a></li>
+                  </ul>
+                </div>
+            </a>
+
+            
+
+        
         </ul>
     </div>
 
     <div class="content">
         <%- body %>
     </div>
+
+    
+    <!-- index.js  -->
+    <script src="/Public/js/index.js"></script>
 </body>
-</html>
+</html> 
