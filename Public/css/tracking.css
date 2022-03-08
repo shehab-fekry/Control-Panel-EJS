@@ -11,15 +11,15 @@
   /* ------------------------------- Map divs and styling -------------------------------- */
 
 .map-img{
-    position: relative;
-    top: calc(50% - 150px);
-    left: calc(50% - 150px);
-    width: 300px;
-    height: 300px;
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 100%;
+}
   
   .map{
-    height: 45%;
+    height: 40%;
     width: 90%;
     margin-top: 0px;
     box-shadow: 0px 0px 10px #ccc;
@@ -173,7 +173,7 @@
   
   .btn{
     display: inline-block;
-    padding: 10px 10.1px;
+    /* padding: 10px 10px; */
     margin: 5px 0px;
     font-weight: 700;
     background-color: white;
@@ -227,18 +227,85 @@
   }
   
   
-  @media only screen and (max-width: 500px) {
+
+  
+  @media only screen and (min-width: 500px) and (max-width:619px){
     .btn{
-      width: 250px;
+      width:80px;
+      padding: 0px;
+      font-size: 12px;
     }
-    span.live-icon{
-      position: absolute;
-      right: 20px;
+
+    .btn img{
+      width: 17px;
+      height: 17px;
+    }
+
+    span.live-on{
+      margin-left: 5px;
+      }
+
+    .status{
+      height: 25px;
+      width: 60px;
+      font-size: 10px;
+    }
+    
+    .tdata{
+      font-size: 12px;
     }
   }
-  
-  @media only screen and (max-width: 350px) {
+
+
+  @media only screen and (min-width: 620px) {
     .btn{
-      width: 100%;
+      width:90px;
+      font-size: 12px;
+    }
+
+    .btn img{
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn_live .text{
+      display: inline-block;
+    }
+
+    .status{
+      height: 25px;
+      width: 65px;
+      font-size: 12px;
+    }
+    
+    .tdata{
+      font-size: 13px;
+    }
+  }
+
+
+  @media only screen and (min-width: 750px) {
+    .btn{
+      width:100px;
+      font-size: 14px;
+    }
+
+    .btn img{
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn_live .text{
+      display: inline-block;
+    }
+
+    .status{
+      height: 25px;
+      width: 75px;
+      font-size: 15px;
+    }
+    
+    .tdata{
+      font-size: 14px;
     }
   }

@@ -57,8 +57,8 @@ exports.getSignUp = (req, res, next) => {
 }
 
 exports.getForgetPassword = (req, res, next) => {
-    res.render('forgetPass.ejs', {
-        layout: 'forgetPass',
+    res.render('forgetPassword.ejs', {
+        layout: 'forgetPassword',
         pageTitle: 'Forget Password',
     })
 }
@@ -66,7 +66,7 @@ exports.getForgetPassword = (req, res, next) => {
 exports.getnewPassword = (req, res, next) => {
     res.render('newPassword.ejs', {
         layout: 'newPassword',
-        pageTitle: 'Forget Password',
+        pageTitle: 'New Password',
     })
 }
 

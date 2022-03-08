@@ -169,3 +169,106 @@
     font-weight: 700;
     color: #252C4B;
 }
+
+
+
+@media only screen and (min-width: 500px) and (max-width:614px)
+{
+    .drivers, .buses, .parents, .children{
+        width: 25%;
+        height: 80px;
+    }
+    
+    .number{
+        width: 40px;
+        height: 70%;
+        font-size: 20px;
+        font-weight: 800;
+        /* border: 1px solid black; */
+    }
+    
+    .label{
+        /* border: 1px solid black; */
+        padding-top: 10px;
+    }
+    
+    .label .head{
+        /* height: 50%; */
+        font-size: 8px;
+        font-weight: 700;
+        /* border: 1px solid black; */
+    }
+    
+    .label .sublabel{
+        /* height: 50%; */
+        font-size: 6px;
+        /* border: 1px solid black; */
+    }
+}
+
+
+@media only screen and (min-width: 615px) and (max-width:749px)
+{
+    .drivers, .buses, .parents, .children{
+        width: 25%;
+        height: 80px;
+    }
+    
+    .number{
+        width: 40px;
+        height: 70%;
+        font-size: 25px;
+        font-weight: 800;
+        /* border: 1px solid black; */
+    }
+    
+    .label{
+        /* border: 1px solid black; */
+        padding-top: 10px;
+    }
+    
+    .label .head{
+        /* height: 50%; */
+        font-size: 12px;
+        font-weight: 700;
+        /* border: 1px solid black; */
+    }
+    
+    .label .sublabel{
+        /* height: 50%; */
+        font-size: 9px;
+        /* border: 1px solid black; */
+    }
+}
+
+
+@media only screen and (min-width: 750px) and (max-width:1000px)
+{
+    .drivers, .buses, .parents, .children{
+        width: 25%;
+        height: 80px;
+    }
+    
+    .number{
+        width: 40px;
+        height: 70%;
+        font-size: 30px;
+        font-weight: 800;
+        /* border: 1px solid black; */
+    }
+    
+    .label .head{
+        height: 50%;
+        font-size: 15px;
+        font-weight: 700;
+        /* border: 1px solid black; */
+    }
+    
+    .label .sublabel{
+        height: 50%;
+        font-size: 12px;
+        /* border: 1px solid black; */
+    }
+}
+
+

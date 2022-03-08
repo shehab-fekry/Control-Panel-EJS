@@ -90,7 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
 //                     }
 //             });
 
-const ctx1 = document.getElementById('pieChart');
+document.addEventListener('DOMContentLoaded', function(){
+
+    const ctx1 = document.getElementById('pieChart');
     const pieChart = new Chart(ctx1, {
         type: 'pie',
         data: {
@@ -156,3 +158,5 @@ const ctx1 = document.getElementById('pieChart');
             }
         }
     });
+
+});
