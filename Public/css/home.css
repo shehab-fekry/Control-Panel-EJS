@@ -1,0 +1,33 @@
+.homepage .home-container{
+    padding: 50px;
+}
+
+.home-design{
+    margin: 80px 0;
+}
+
+.homepage .info_section{
+    width: 90%;
+    margin: 25px 0;
+}
+
+.homepage .typing, .homepage .statistics{
+    background-color: rgb(231 231 231);
+}
+.home-left-side{
+    font-weight: 900;
+}
+
+.home-left-side h1{
+    font-family: fantasy;
+    letter-spacing: 1.5px;
+}
+.home-left-side .btn{
+    background-color: #ffc107;
+    color: #FFF;
+    border: 2px solid #e9b518;
+    padding: 11px 50px;
+}
+.home-right-side img{
+    width: 75%;
+}
