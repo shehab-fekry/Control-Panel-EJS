@@ -2,6 +2,7 @@ let data = require('../Drivers.json')
 
 exports.getdash = (req, res, next) => {
     res.render('home.ejs', {
+        layout: 'home',
         Drivers: [...data],
         pageTitle: 'Dashboard'
     })
@@ -95,5 +96,12 @@ exports.getaddParent = (req, res, next) => {
     res.render('addParent.ejs', {
         layout: 'addParent',
         pageTitle: 'Forget Password',
+    })
+}
+
+exports.getconfirmEmail = (req, res, next) => {
+    res.render('confirmEmail.ejs', {
+        layout: 'confirmEmail',
+        pageTitle: 'Confirm Email',
     })
 }
