@@ -56,6 +56,12 @@ exports.getSignUp = (req, res, next) => {
         pageTitle: 'Sign Up',
     })
 }
+exports.getconfirmEmail = (req, res, next) => {
+    res.render('confirmEmail.ejs', {
+        layout: 'confirmEmail',
+        pageTitle: 'Confirm Email',
+    })
+}
 
 exports.getForgetPassword = (req, res, next) => {
     res.render('forgetPassword.ejs', {
@@ -73,35 +79,37 @@ exports.getnewPassword = (req, res, next) => {
 
 exports.getupdateDriver = (req, res, next) => {
     res.render('updateDriver.ejs', {
-        layout: 'updateDriver',
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getaddDriver = (req, res, next) => {
     res.render('addDriver.ejs', {
-        layout: 'addDriver',
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getupdateParent = (req, res, next) => {
     res.render('updateParent.ejs', {
-        layout: 'updateParent',
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getaddParent = (req, res, next) => {
     res.render('addParent.ejs', {
-        layout: 'addParent',
         pageTitle: 'Forget Password',
     })
 }
 
-exports.getconfirmEmail = (req, res, next) => {
-    res.render('confirmEmail.ejs', {
-        layout: 'confirmEmail',
-        pageTitle: 'Confirm Email',
+exports.getParentProfile = (req, res, next) => {
+    res.render('parentProfile.ejs', {
+        pageTitle: 'Forget Password',
     })
 }
+
+exports.getdriverProfile = (req, res, next) => {
+    res.render('driverProfile.ejs', {
+        pageTitle: 'Forget Password',
+    })
+}
+

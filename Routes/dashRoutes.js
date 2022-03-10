@@ -33,5 +33,9 @@ routes.get('/addParent', dashControllers.getaddParent)
 
 routes.get('/confirmEmail', dashControllers.getconfirmEmail)
 
+routes.get('/parentProfile', dashControllers.getParentProfile)
+
+routes.get('/driverProfile', dashControllers.getdriverProfile)
+
 
 module.exports = routes;
