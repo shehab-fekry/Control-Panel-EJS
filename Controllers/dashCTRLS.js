@@ -105,3 +105,9 @@ exports.getconfirmEmail = (req, res, next) => {
         pageTitle: 'Confirm Email',
     })
 }
+
+exports.adminProfile = (req, res, next) => {
+    res.render('adminProfile.ejs', {
+        pageTitle: 'Admin Profile',
+    })
+}

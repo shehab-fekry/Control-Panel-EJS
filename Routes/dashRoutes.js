@@ -33,5 +33,7 @@ routes.get('/addParent', dashControllers.getaddParent)
 
 routes.get('/confirmEmail', dashControllers.getconfirmEmail)
 
+routes.get('/adminProfile', dashControllers.adminProfile)
+
 
 module.exports = routes;

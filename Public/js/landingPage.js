@@ -32,6 +32,37 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 });
 
+// Home Page Typing
+
+document.addEventListener('DOMContentLoaded', function(){
+    let type = new Typed('.home-type', {
+        strings: [
+        "Live Bus Tracking",
+        "Ensure students' safety ",
+        "Your Child Under Your Control"],
+        stringsElement: null,
+        // typing speed
+        typeSpeed: 40,
+        // time before typing starts
+        startDelay: 600,
+        // backspacing speed
+        backSpeed: 10,
+        // time before backspacing
+        backDelay: 2000,
+        // loop
+        loop: true,
+        // false = infinite
+        // loopCount: 1,
+        // show cursor
+        showCursor: false,
+        // character for cursor
+        cursorChar: "|",
+        // attribute to type (null == text)
+        attr: null,
+        // either html or text
+        contentType: 'html',
+    });
+});
 
 // ------------------------------------------- Counters --------------------------------------------------
 
@@ -90,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
 //                     }
 //             });
 
-const ctx1 = document.getElementById('pieChart');
+document.addEventListener('DOMContentLoaded', function(){
+
+    const ctx1 = document.getElementById('pieChart');
     const pieChart = new Chart(ctx1, {
         type: 'pie',
         data: {
@@ -156,3 +189,5 @@ const ctx1 = document.getElementById('pieChart');
             }
         }
     });
+
+});

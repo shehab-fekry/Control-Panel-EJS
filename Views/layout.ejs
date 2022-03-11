@@ -20,6 +20,7 @@
     <link href="/Public/css/addPickPoint.css" rel="stylesheet">
     <link href="/Public/css/confirmEmail.css" rel="stylesheet">
     <link href="/Public/css/home.css" rel="stylesheet">
+    <link href="/Public/css/adminProfile.css" rel="stylesheet">
 
 
 
@@ -43,9 +44,8 @@
 </head>
 
 <body>
-    <div class="sideBar">
 
-          
+    <div class="sideBar">
 
         <div class="top-side-bar">
             <div class="notification-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
@@ -72,10 +72,19 @@
         </div>
 
         <ul class="list-group">
-            <a href="/dash/tracking">     
-                <li class="list-group-item mt-2"><i class="fa fa-bus" aria-hidden="true"></i> &nbsp; Trip Tracking</li>
+            <a href="/dash/landing">     
+                <li class="list-group-item mt-2"><i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard</li>
             </a>
             <a href="/dash/addPickPoint"><li class="list-group-item mt-2"><i class="fa fa-map"></i> &nbsp;Add a Pick-Point</li></a>
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-trips" aria-expanded="false">
+                <i class="fa fa-subway"></i> &nbsp;Trips </li>
+                <div class="collapse" id="dashboard-collapse-trips">
+                    <ul class="btn-toggle-nav list-unstyled">
+                        <li><a href="/dash/tracking" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Tracking</a></li>
+                        <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp; Update Trips </a></li>
+                    </ul>
+                </div>
+            </a>
             <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-1" aria-expanded="false">
                 <i class="fa fa-id-card"></i> &nbsp;Drivers</li>
                 <div class="collapse" id="dashboard-collapse-1">
@@ -96,17 +105,26 @@
                 </div>
             </a>
 
-            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-3" aria-expanded="false">
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-vehicles" aria-expanded="false">
+                <i class="fa fa-bus"></i> &nbsp;Vehicles </li>  
+                <div class="collapse" id="dashboard-collapse-vehicles">
+                  <ul class="btn-toggle-nav list-unstyled">
+                    <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Show Vehicles</a></li>
+                    <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Add Vehicle</a></li>
+                  </ul>
+                </div>
+            </a>
+
+
+            <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-profile" aria-expanded="false">
                 <i class="fa fa-user-circle"></i> &nbsp;Profile </li>  
-                <div class="collapse" id="dashboard-collapse-3">
+                <div class="collapse" id="dashboard-collapse-profile">
                   <ul class="btn-toggle-nav list-unstyled">
                     <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Edit Profile</a></li>
                     <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Logout</a></li>
                   </ul>
                 </div>
-            </a>
-
-            
+            </a>            
 
         
         </ul>
@@ -114,9 +132,9 @@
 
     <div class="content">
         <%- body %>
+        
     </div>
-
-    
+ 
     <!-- index.js  -->
     <script src="/Public/js/index.js"></script>
 </body>
