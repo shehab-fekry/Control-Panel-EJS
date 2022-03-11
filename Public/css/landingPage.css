@@ -26,8 +26,8 @@
     text-align: center;
     height: 80px;
     width: 100%;
-    /* box-shadow: 0px 0px 5px #ccc; */
-    background-color: #f8f8f8;
+    box-shadow: 0px 0px 5px #ccc;
+    background-color: #fcfcfc;
     border-radius: 10px;
     /* border: 1px solid black; */
 } 
@@ -88,9 +88,9 @@
     justify-content: center;
     width: 100%;
     border-radius: 10px;
-    background-color: #f8f8f8;
+    background-color: #fcfcfc;
     /* border: 1px solid red; */
-    /* box-shadow: 0px 0px 5px #ccc; */
+    box-shadow: 0px 0px 5px #ccc;
 }
 
 .drivers, .buses, .parents, .children{
@@ -159,9 +159,10 @@
 .charts_section .card{
     width: 440px;
     border: none;
-    /* box-shadow: 0px 0px 10px #ccc; */
+    box-shadow: 0px 0px 5px #ccc;
     color: #384850;
     border-radius: 20px;
+    background-color: #fcfcfc;
 }
 
 .card .card-title{

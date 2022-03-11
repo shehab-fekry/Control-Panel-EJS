@@ -58,8 +58,8 @@ exports.getSignUp = (req, res, next) => {
 }
 
 exports.getForgetPassword = (req, res, next) => {
-    res.render('forgetPass.ejs', {
-        layout: 'forgetPass',
+    res.render('forgetPassword.ejs', {
+        layout: 'forgetPassword',
         pageTitle: 'Forget Password',
     })
 }
@@ -110,4 +110,14 @@ exports.adminProfile = (req, res, next) => {
     res.render('adminProfile.ejs', {
         pageTitle: 'Admin Profile',
     })
+}
+
+exports.getSchool = (req, res, next) => {
+    res.render('school.ejs', {
+        pageTitle: 'School',
+    })
+}
+
+exports.postData = (req, res, next) => {
+    console.log(req.body)
 }

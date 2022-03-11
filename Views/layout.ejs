@@ -17,10 +17,10 @@
     <link href="/Public/css/tracking.css" rel="stylesheet">
     <link href="/Public/css/Drivers.css" rel="stylesheet">
     <link href="/Public/css/Parents.css" rel="stylesheet">
-    <link href="/Public/css/addPickPoint.css" rel="stylesheet">
     <link href="/Public/css/confirmEmail.css" rel="stylesheet">
     <link href="/Public/css/home.css" rel="stylesheet">
     <link href="/Public/css/adminProfile.css" rel="stylesheet">
+    
 
 
 
@@ -65,8 +65,8 @@
 
             <div class="sidebar-user">
                 <img src="../Public/assets/manager.png" class="sidebar-img">
-                <h2> Yousef Alhaj </h3>
-                <h4> Frontend Developer </h4>
+                <h2> Admin </h3>
+                <h4> School Manager </h4>
                
             </div>
         </div>
@@ -75,7 +75,9 @@
             <a href="/dash/landing">     
                 <li class="list-group-item mt-2"><i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard</li>
             </a>
-            <a href="/dash/addPickPoint"><li class="list-group-item mt-2"><i class="fa fa-map"></i> &nbsp;Add a Pick-Point</li></a>
+            <a href="/dash/school">     
+                <li class="list-group-item mt-2"><i class="fa fa-home" aria-hidden="true"></i> &nbsp; School</li>
+            </a>
             <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-trips" aria-expanded="false">
                 <i class="fa fa-subway"></i> &nbsp;Trips </li>
                 <div class="collapse" id="dashboard-collapse-trips">
@@ -117,9 +119,10 @@
 
 
             <a><li class="list-group-item mt-2" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-profile" aria-expanded="false">
-                <i class="fa fa-user-circle"></i> &nbsp;Profile </li>  
+                <i class="fa fa-user-circle"></i> &nbsp;Admin </li>  
                 <div class="collapse" id="dashboard-collapse-profile">
                   <ul class="btn-toggle-nav list-unstyled">
+                    <li><a href="/dash/adminProfile" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Admin Profile</a></li>
                     <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-cog"></i> &nbsp;Edit Profile</a></li>
                     <li><a href="#" class="list-group-item mt-2 sidebar-dropdown-item" ><i class="fa fa-sign-out"></i> &nbsp;Logout</a></li>
                   </ul>

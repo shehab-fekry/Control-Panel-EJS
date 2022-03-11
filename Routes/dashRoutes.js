@@ -35,5 +35,9 @@ routes.get('/confirmEmail', dashControllers.getconfirmEmail)
 
 routes.get('/adminProfile', dashControllers.adminProfile)
 
+routes.get('/school', dashControllers.getSchool)
+
+routes.post('/data', dashControllers.postData)
+
 
 module.exports = routes;

@@ -1,0 +1,61 @@
+<%- contentFor('body') %>
+<head><link rel="stylesheet" href="/Public/css/school.css"></head>
+<div class="schools_wrapper">
+
+    <div class="createSchool">
+        <div class="createSchool-title">Add New School</div>
+        <form  class="createShoolForm"  action="/dash/data" method="POST">
+            <div class="inputPart">
+                <input oninput="changeHandler(event, this.id)" id="SchoolName" type="text" name="schoolName" placeholder="School Name">
+                <input oninput="changeHandler(event, this.id)" id="schoolLevel" type="text" name="school-level" placeholder="School level">
+                <button id="location" class="btn red" onclick="getLocation()">Location</button>
+                <input type="hidden" name="location" id="hiddenInput" value="">
+            </div>
+            <div class="submitPart">
+                <button class="btn btnColor" id="submit" disabled="true" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="card" style="width: 90%;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #384850">Orman School</h5>
+          <h6 class="card-subtitle mb-2" style="color: #ffc107;">Secondary Schools</h6>
+          <p class="card-map">MAP HERE</p>
+          <div class="card-foot">
+            <form action="" method="POST">
+                <button class="btn btnColor" style="margin-right: 10px" type="submit">DELETE</button>
+            </form>
+            <form action="" method="GET">
+                <button class="btn btnColor" type="submit" onclick="">UPDATE</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    
+
+    <!-- tracking.js  -->
+    <script src="/Public/js/school.js"></script>
+    <script>
+        getLocation = () => {
+                navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+                    console.log([latitude, longitude])
+                    document.getElementById('hiddenInput').value = '' + [latitude, longitude]
+                    document.getElementById('location').style.backgroundColor = 'green'
+                    document.getElementById('location').innerHTML = 'Done!'
+                    document.getElementById('location').setAttribute('disabled', true)
+
+                    let text1 = document.getElementById('SchoolName').value
+                    let text2 = document.getElementById('schoolLevel').value
+
+                    if(text1 && text2 !== '')
+                    document.getElementById('submit').disabled = false;
+                }, 
+                (error) => {
+                    console.log(error)
+                },{timeout:10000})
+            }
+    </script>
+</div>

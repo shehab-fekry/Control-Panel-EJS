@@ -1,0 +1,220 @@
+.schools_wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+
+.createSchool{
+    /* border: 1px solid black; */
+    width: 90%;
+    padding: 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 20px;
+    background-color: #fcfcfc;
+  }
+
+.createSchool-title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #384850;
+    /* border: 1px solid rgb(77, 77, 230); */
+}
+
+  /* .createSchool::before{
+    content: 'Add School';
+    position:absolute;
+    z-index: 2;
+    margin-top: -32px;
+    margin-left: 10px;
+    width:200px;
+    font-size: 25px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 5px #ccc;
+  } */
+
+
+  form{
+    display: inline-block;
+  }
+
+  .createShoolForm{
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    /* border: 1px solid rgb(77, 77, 230); */
+
+  }
+
+  .createShoolForm .inputPart{
+      width: 75%;
+      height: 50%;
+      /* border: 1px solid rgb(77, 77, 230); */
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+
+  .inputPart input{
+      width: 40%;
+      height: 40%;
+      outline: none;
+      border: 1px solid #ccc;
+      background-color: #fcfcfc;
+      padding-left: 5px;
+      padding: 15px;
+      border-radius: 10px;
+  }
+
+  .createShoolForm .submitPart{
+    width: 25%;
+    /* border: 1px solid rgb(25, 25, 37); */
+    display: flex;
+    justify-content: center;
+}
+
+.btnColor {
+    background-color: #384850;
+    border: none;
+    color: white;
+}
+
+.btnColor:hover{
+    color: white;
+    box-shadow: 0px 0px 5px #384850;
+}
+
+.red{
+    background-color: #dc3545;
+    color: white;
+    padding: 5px;
+    /* border-radius: unset; */
+}
+
+.red:hover{
+    color: white;
+}
+
+.card{
+      height: 300px;
+      box-shadow: 0px 0px 5px #ccc;
+      border-radius: 20px;
+      background-color: #fcfcfc;
+  }
+
+.card-title{
+      color: #384850;
+      height: 10%;
+      /* border: 1px solid black; */
+  }
+
+.card-subtitle{
+      color: #ffc107;
+      height: 10%;
+      /* border: 1px solid black; */
+  }
+
+.card-map{
+    height: 50%;
+    /* border: 1px solid black; */
+    border: 1px solid black;
+}
+
+.card-foot{
+    height: 20%;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .schools{
+    display: block;
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    font-weight: 500;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 10px;
+    background-color: unset;
+    color: #384850;
+    padding: 0px;
+  }
+  
+  .schools::before{
+    content: 'Schools';
+    position:absolute ;
+    z-index: 2;
+    margin-top: -25px;
+    margin-left: 10px;
+    width:200px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #384850;
+    background-color: unset;
+    text-shadow: 0px 0px 10px #ccc;
+  }
+
+  .schools .head_row{
+    top: 0px;
+    height: 100%;
+    position: sticky;
+    z-index: 1;
+  }
+
+  .schools .head_data{
+    padding: 10px;
+    height: 100%;
+    width: 25%;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 800;
+    background-color: #ffc107;
+    color: #384850;
+  }
+
+  .schools .roow{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 0px;
+  }
+  
+
+  .roow:hover{
+    background-color: rgba(255, 196, 0, 0.3);
+  }
+  .roow:hover .btn, .roow.hover .btn { background: #f8f8f8}
+  
+  .schools .tdata{
+    vertical-align: middle;
+    text-align: center;
+    width: 25%;
+    /* padding: 5px; */
+  }
+
