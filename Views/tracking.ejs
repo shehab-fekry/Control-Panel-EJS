@@ -2,7 +2,7 @@
 
 <div class="tracking-wrapper">
     <div id="map" class="map">
-        <img class="map-img" src="../Public/assets/tracking2.svg"/>
+        <img class="map-img" src="../Public/assets/tracking.svg"/>
     </div>
 
     <!-- <div id="pusher" style="border: 1px solid black"></div> -->
@@ -33,10 +33,12 @@
                             Preview
                         </button>
                         <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
-                            onclick="initTrack('<%= JSON.stringify(driver.wayPoints) %>')">
+                            onclick="initTrack('<%= JSON.stringify(driver.wayPoints) %>' , '<%= driver.id %>')">
                             <img src="../Public/assets/tracking.png" width="25px" height="25px">
-                            Live
+                            <div class="text">
+                                Live
                             <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
+                            </div>
                         </button>
                         <!-- <a class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>" href="/dash/tracking/<%= driver.id%>">
                             <img src="../Public/assets/tracking.png" width="25px" height="25px">

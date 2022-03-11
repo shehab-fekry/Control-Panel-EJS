@@ -7,25 +7,37 @@
 let state = {
     previewMap: {},
     trackingMap: {},
-    prevDiv: {},
     marker: {},
+    prevDiv: {},
     currentStep: {},
     mapLoaded: false,
+    locationIndex: 0,
+    wayPoints:[],
+    action: '',
+    driverID: 0,
 }
 
 
+// ----------------------------------------------- Live Track -----------------------------------------------------
+
+
 // Creating Pusher channel connection
-Pusher.logToConsole = false;
+Pusher.logToConsole = true;
 let pusher = new Pusher('d363addb971561dc7e96', {cluster: 'eu'});
-let channel = pusher.subscribe('new_notify');
+let channel;
+if(state.driverID === 0)
+{
+    // Pusher.logToConsole = true;
+    channel = pusher.subscribe('new_notify.' + state.driverID);
+}
+
 channel.bind('Gizawy', function(data) {
     if (!state.mapLoaded) return
     
     let langLong = [data.latitude, data.longitude]
-    let index = data.index
 
     // Styling the previous steps
-    if(index !== 0)
+    if(state.locationIndex !== 0)
     {
         state.prevDiv = state.marker.getElement()
         state.prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
@@ -57,45 +69,132 @@ channel.bind('Gizawy', function(data) {
         // this animation is considered essential with respect to prefers-reduced-motion
         essential: true
     })
-
+    state.locationIndex += 1
 });
 
 
+const initTrack = (wayPoints, driverID) => {
+    state.mapLoaded = false
+    state.locationIndex = 0
+    state.wayPoints = wayPoints
+    state.action = 'tracking'
+    // state.driverID = driverID
+    // changeChannel()
+    
+    // converting (wayPoints) to JSON format and specifying [start] & [end] points
+    const waypts = JSON.parse(wayPoints)
+    const start = waypts[0]
+    const end = waypts[waypts.length-1]
+
+    
+    
+    // Initializing the map 
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
+    state.trackingMap = new mapboxgl.Map({
+        container: document.getElementById('map'),
+        style: 'mapbox://styles/shehab-fekry/cl0e4k50n002p14si2n2ctxy9',
+        center: start,
+        // pitch: 60, // pitch in degrees
+        // bearing: -60, // bearing in degrees
+        zoom: 15
+        });
+
+    // adding controls
+    state.trackingMap.addControl(new mapboxgl.FullscreenControl());
+    state.trackingMap.addControl(new mapboxgl.NavigationControl());
+
+
+    
+
+
+    state.trackingMap.on('load', () => {
+        state.mapLoaded = true
+    })
+}
+
+
+const changeChannel = () => {
+    if(state.driverID === 1)
+    {
+        // Pusher.logToConsole = true;
+        channel = pusher.subscribe('new_notify.' + state.driverID);
+        channel.bind("Gizawy", (data) => {
+            if (!state.mapLoaded) return
+
+            let langLong = [data.latitude, data.longitude]
+            // let index = data.index
+
+            // Styling the previous steps
+            if(state.locationIndex !== 0)
+            {
+                state.prevDiv = state.marker.getElement()
+                state.prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+            }
+
+            // Drawing the current step
+            state.currentStep = document.createElement('div');
+            state.currentStep.classList = 'currentStep';
+            state.marker = new mapboxgl.Marker(state.currentStep).setLngLat(langLong).addTo(state.trackingMap);
+
+            // Drwing the new current step
+            state.trackingMap.flyTo({
+                // These options control the ending camera position: centered at
+                // the target, at zoom level 9, and north up.
+                center: langLong,
+                zoom: 15,
+                bearing: 0,
+                
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                speed: 0.7, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+                
+                // This can be any easing function: it takes a number between
+                // 0 and 1 and returns another number between 0 and 1.
+                easing: (t) => t,
+                
+                // this animation is considered essential with respect to prefers-reduced-motion
+                essential: true
+            })
+            state.locationIndex += 1
+        })
+    }
+    else(state.driverID === 2)
+    {
+        // Pusher.logToConsole = true;
+        channel = pusher.subscribe('new_notify.' + state.driverID);
+        channel.bind("Gizawy")
+    }
+    console.log('changed')
+}
 
 
 
 
 
-
-
-
+// ----------------------------------------------- Preview -----------------------------------------------------
 
 const initPreview = (wayPoints) => {
+    state.action = 'preview'
+
     // converting (wayPoints) to JSON format and specifying [start] & [end] points
     const waypts = JSON.parse(wayPoints)
     const start = waypts[0]
     const end = waypts[waypts.length-1]
     
-    
     // converting (wayPoints) to string and repeating (curb;) as many as wayPoints for API porposes
-    let wayPointString = ''
-    let curbString = ''
-    waypts.forEach(point => {
-        wayPointString += point.join(',') + ';'
-        curbString += 'curb;'
-    })
-    wayPointString = wayPointString.slice(0, -1);
-    curbString = curbString.slice(0, -1)
-    
-    
+    let [curbString, wayPointString] = optinmizeAPI(waypts)
+
     // Initializing the map 
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
     state.previewMap = new mapboxgl.Map({
     container: document.getElementById('map'),
-    style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
+    style: 'mapbox://styles/shehab-fekry/cl0e4k50n002p14si2n2ctxy9',
     center: start,
     zoom: 10
     });
+
 
     // Adding controls
     state.previewMap.addControl(new mapboxgl.FullscreenControl());
@@ -174,11 +273,13 @@ const initPreview = (wayPoints) => {
             });
 
     
-        getDirections(curbString, wayPointString)
+        getDirections(curbString, wayPointString, state.action)
     });
 }
 
-const getDirections = (curbString, wayPointString) => {
+
+
+const getDirections = (curbString, wayPointString, action) => {
     let request = 'https://api.mapbox.com/optimized-trips/v1/'
     request += 'mapbox/driving/'
     request += '' + wayPointString
@@ -191,12 +292,12 @@ const getDirections = (curbString, wayPointString) => {
     fetch(request)
     .then(res => res.json())
     .then(res => {
-        setRouteLine(res.trips)
+        setRouteLine(res.trips, action)
     })
     .catch(err => console.log(err))
 }
 
-const setRouteLine = (trips) => {
+const setRouteLine = (trips, action) => {
     const routeLine = {
         type: 'FeatureCollection',
         features: [{
@@ -204,51 +305,24 @@ const setRouteLine = (trips) => {
             geometry: trips[0].geometry
         }]
     }
-
+    if(action === 'preview')
     state.previewMap.getSource('route').setData(routeLine)
+    else
+    state.trackingMap.getSource('route').setData(routeLine)
 }
 
 
-
-
-
-
-
-
-
-// ----------------------------------------------- Live Track -----------------------------------------------------
-
-
-
-const initTrack = (wayPoints) => {
-    state.mapLoaded = false
-    
-    // converting (wayPoints) to JSON format and specifying [start] & [end] points
-    const waypts = JSON.parse(wayPoints)
-    const start = waypts[0]
-    const end = waypts[waypts.length-1]
-    
-    // Initializing the map 
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
-    state.trackingMap = new mapboxgl.Map({
-        container: document.getElementById('map'),
-        style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
-        center: start,
-        pitch: 60, // pitch in degrees
-        bearing: -60, // bearing in degrees
-        zoom: 15
-        });
-
-    // adding controls
-    state.trackingMap.addControl(new mapboxgl.FullscreenControl());
-    state.trackingMap.addControl(new mapboxgl.NavigationControl());
-
-
-    state.trackingMap.on('load', () => {
-        state.mapLoaded = true
+const optinmizeAPI = (wayPoints) => {
+    let wayPointString = ''
+    let curbString = ''
+    wayPoints.forEach(point => {
+        wayPointString += point.join(',') + ';'
+        curbString += 'curb;'
     })
+    wayPointString = wayPointString.slice(0, -1);
+    curbString = curbString.slice(0, -1)
+    return [curbString, wayPointString]
 }
-
 
 
 
@@ -327,3 +401,76 @@ const initTrack = (wayPoints) => {
 //         timeout += 2000
 //     })
 // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const initTrack = (wayPoints) => {
+//     state.mapLoaded = false
+//     state.locationIndex = 0
+//     state.wayPoints = wayPoints
+    
+//     // converting (wayPoints) to JSON format and specifying [start] & [end] points
+//     const waypts = JSON.parse(wayPoints)
+//     const start = waypts[0]
+//     const end = waypts[waypts.length-1]
+    
+//     // Initializing the map 
+//     mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
+//     state.trackingMap = new mapboxgl.Map({
+//         container: document.getElementById('map'),
+//         style: 'mapbox://styles/shehab-fekry/ckztwm1al00sw14l8jllsf27l',
+//         center: start,
+//         pitch: 60, // pitch in degrees
+//         bearing: -60, // bearing in degrees
+//         zoom: 15
+//         });
+
+//     // adding controls
+//     state.trackingMap.addControl(new mapboxgl.FullscreenControl());
+//     state.trackingMap.addControl(new mapboxgl.NavigationControl());
+
+
+//     state.trackingMap.on('load', () => {
+//         state.mapLoaded = true
+//     })
+// }
