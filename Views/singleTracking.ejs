@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/css/singleTracking.css">
+    <!--   mapbox  -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <!--  Pusher   -->
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="map"></div>
+    
+    
+
+
+    <script>
+        let state = {
+            map: {},
+            marker: {},
+            prevDiv: {},
+            currentStep: {},
+            mapLoaded: false,
+            locationIndex: 0,
+        }
+
+        optinmizeAPI = (wayPoints) => {
+        let wayPointString = ''
+        let curbString = ''
+        wayPoints.forEach(point => {
+            wayPointString += point.join(',') + ';'
+            curbString += 'curb;'
+        })
+        wayPointString = wayPointString.slice(0, -1);
+        curbString = curbString.slice(0, -1)
+        return [curbString, wayPointString]
+        }
+
+        getDirections = (curbString, wayPointString) => {
+            let request = 'https://api.mapbox.com/optimized-trips/v1/'
+            request += 'mapbox/driving/'
+            request += '' + wayPointString
+            request += '?access_token=' + mapboxgl.accessToken
+            request += '&geometries=geojson'
+            request += '&approaches=' + curbString
+            request += '&steps=true'
+            request += '&overview=full'
+
+            fetch(request)
+            .then(res => res.json())
+            .then(res => {
+                setRouteLine(res.trips)
+            })
+            .catch(err => console.log(err))
+        }
+
+        setRouteLine = (trips) => {
+            const routeLine = {
+                type: 'FeatureCollection',
+                features: [{
+                    properties: {},
+                    geometry: trips[0].geometry
+                }]
+            }
+            state.map.getSource('route').setData(routeLine)
+        }
+
+
+        
+        
+        
+        
+        
+        // Creating Pusher channel connection
+        Pusher.logToConsole = true;
+        let pusher = new Pusher('d363addb971561dc7e96', {cluster: 'eu'});
+        let channel = pusher.subscribe('new_notify.' +  tripID);
+        channel.bind('Gizawy',(data) => {
+            if (!state.mapLoaded) return
+            
+            let langLong = [data.latitude, data.longitude]
+        
+            // Styling the previous steps
+            if(state.locationIndex !== 0)
+            {
+                state.prevDiv = state.marker.getElement()
+                state.prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
+            }
+            
+            // Drawing the current step
+            state.currentStep = document.createElement('div');
+            state.currentStep.classList = 'currentStep';
+            state.marker = new mapboxgl.Marker(state.currentStep).setLngLat(langLong).addTo(state.map);
+        
+            // Drwing the new current step
+            state.map.flyTo({
+                // These options control the ending camera position: centered at
+                // the target, at zoom level 9, and north up.
+                center: langLong,
+                zoom: 15,
+                bearing: 0,
+                
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                speed: 0.7, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+                
+                // This can be any easing function: it takes a number between
+                // 0 and 1 and returns another number between 0 and 1.
+                easing: (t) => t,
+                
+                // this animation is considered essential with respect to prefers-reduced-motion
+                essential: true
+            })
+            state.locationIndex += 1
+        });
+        
+        
+        
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // const waypts = JSON.parse(wayPoints)
+            // const start = waypts[0]
+            // const end = waypts[waypts.length-1]
+
+
+            // converting (wayPoints) to string and repeating (curb;) as many as wayPoints for API porposes
+            let [curbString, wayPointString] = optinmizeAPI(waypts)
+            
+            // Initializing the map 
+            mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlaGFiLWZla3J5IiwiYSI6ImNrejhva3M4czFmMW0ybnVzbDd3eXE5YmYifQ.bHRGTKh_1pdTl1RmsGmLSw';
+            map = new mapboxgl.Map({
+                container: document.getElementById('map'),
+                style: 'mapbox://styles/shehab-fekry/cl0e4k50n002p14si2n2ctxy9',
+                center: [31.1005209,29.9617272],
+                zoom: 15
+                });
+
+            // adding controls
+            map.addControl(new mapboxgl.FullscreenControl());
+            map.addControl(new mapboxgl.NavigationControl());
+
+            
+            // Popups and Markers
+            let marker;
+            for(i=0; i< waypts.length; i++){
+                if(i == 0)
+                {
+                    popup = new mapboxgl.Popup()
+                    .setHTML('<strong>School</strong>')
+                    .addTo(map);
+
+                    marker = document.createElement('div');
+                    marker.classList = 'school';
+                    new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(map);
+                } else {
+                    popup = new mapboxgl.Popup()
+                    .setHTML('<strong>Student Pick Point</strong><ul><li>child1</li><li>child2</li><li>child3</li></ul>')
+                    .addTo(map);
+
+                    marker = document.createElement('div');
+                    marker.classList = 'pickPoint';
+                    new mapboxgl.Marker(marker).setLngLat(waypts[i]).setPopup(popup).addTo(map);
+                }
+            }
+
+
+            // setting up routes and layers
+            map.on('load', () => {
+                map.addSource('route', {
+                    type: 'geojson',
+                    data: {
+                        type: 'FeatureCollection',
+                        features: [],
+                    }
+                });
+                
+                map.addLayer(
+                    {
+                    id: 'routeline-active',
+                    type: 'line',
+                    source: 'route',
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': 'rgb(255, 196, 0)',
+                        'line-width': 8
+                    }
+                    },
+                    'waterway-label'
+                );
+
+                map.addLayer({
+                        id: 'routeArrows',
+                        type: 'symbol',
+                        source: 'route',
+                        layout: {
+                            'symbol-placement': 'line',
+                            'text-field': '➔',
+                            'text-rotate': 0,
+                            'text-keep-upright': false,
+                            'symbol-spacing': 60,
+                            'text-size': 11,
+                            'text-offset': [0, -0.1],
+                        },
+            
+                        paint: {
+                            'text-color': 'rgb(49, 49, 49)',
+                            'text-halo-width': 1,
+                        }
+                });
+                    
+                getDirections(curbString, wayPointString)
+                state.mapLoaded = true
+            });
+        })
+    </script>
+</body>
+</html>

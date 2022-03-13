@@ -58,6 +58,14 @@
     text-shadow: 0px 0px 5px #ccc;
 
 }
+
+@media only screen and (min-width:500px) and (max-width: 765px) {
+    .headingParent::before{
+        margin-top: -40px;
+    }
+}
+
+
 .headingUpdateDriver::before{
     content: 'Update Driver';
 

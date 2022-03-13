@@ -15,7 +15,7 @@ server.set('views', 'Views')
 // Dashboard Layout
 server.use(expressLayout)
 server.set('layout SignIn', false)
-server.set('layout home.ejs', false)
+server.set('layout home', false)
 server.set('layout SignUp', false)
 server.set('layout forgetPassword', false)
 server.set('layout newPassword', false)

@@ -99,6 +99,7 @@
     align-items: center;
     width: 25%;
     height: 80px;
+    padding-left: 5px;
 }
 
 .number{
@@ -112,6 +113,7 @@
     color: #ffc107;
     font-size: 35px;
     font-weight: 800;
+    padding-left: 5px;
     /* border: 1px solid black; */
 }
 
@@ -122,9 +124,10 @@
 .label{
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
+    align-items: baseline;
+    
     min-width: 60%;
-    height: 70%;
+    height: 65%;
     /* border: 1px solid black; */
 }
 
@@ -179,12 +182,13 @@
     .drivers, .buses, .parents, .children{
         width: 25%;
         height: 80px;
+        padding: 0px;
     }
     
     .number{
-        width: 40px;
+        width: 30px;
         height: 70%;
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 800;
         /* border: 1px solid black; */
     }
@@ -192,6 +196,7 @@
     .label{
         /* border: 1px solid black; */
         padding-top: 10px;
+        height: 50%;
     }
     
     .label .head{
@@ -219,7 +224,7 @@
     .number{
         width: 40px;
         height: 70%;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 800;
         /* border: 1px solid black; */
     }
@@ -227,6 +232,7 @@
     .label{
         /* border: 1px solid black; */
         padding-top: 10px;
+        height: 60%;
     }
     
     .label .head{
@@ -252,23 +258,66 @@
     }
     
     .number{
-        width: 40px;
+        width: 35px;
         height: 70%;
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 800;
+        padding-right: 7px;
         /* border: 1px solid black; */
+    }
+
+    .label{
+        padding-top: 10px;
+        height: 60%;
+        justify-content: center;
     }
     
     .label .head{
         height: 50%;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 700;
         /* border: 1px solid black; */
     }
     
     .label .sublabel{
         height: 50%;
-        font-size: 12px;
+        font-size: 10px;
+        /* border: 1px solid black; */
+    }
+}
+
+@media only screen and (min-width: 1001px)
+{
+    .drivers, .buses, .parents, .children{
+        width: 25%;
+        height: 80px;
+    }
+    
+    .number{
+        width: 35px;
+        height: 70%;
+        font-size: 35px;
+        font-weight: 800;
+        padding-right: 10px;
+        /* border: 1px solid black; */
+    }
+
+    .label{
+        /* padding-top: 10px; */
+        height: 65%;
+        justify-content: center;
+    }
+    
+    .label .head{
+        height: 60%;
+        font-size: 21px;
+        font-weight: 700;
+        /* border: 1px solid black; */
+    }
+    
+    .label .sublabel{
+        height: 50%;
+        font-size: 15px;
         /* border: 1px solid black; */
     }
 }

@@ -41,5 +41,7 @@ routes.get('/school', dashControllers.getSchool)
 
 routes.post('/data', dashControllers.postData)
 
+// routes.get('/singleTracking', dashControllers.singleTracking)
 
-module.exports = routes;
+
+module.exports = routes; 

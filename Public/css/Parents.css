@@ -14,7 +14,21 @@
     
   
 @media(min-width: 1200px){
-    .container{width: 1170px;}}    
+    .container{width: 1170px;}}
+    
+    
+
+    @media(min-width: 768px){
+        .box{width: 170px;}}
+        
+        
+    @media(min-width: 992px){
+        .box{width: 220px;}}
+        
+      
+    @media(min-width: 1200px){
+        .box{width: 350px;}}
+
 
 
 
