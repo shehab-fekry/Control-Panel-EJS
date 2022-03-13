@@ -32,7 +32,7 @@
                             <img src="../Public/assets/preview.png" width="25px" height="25px">
                             Preview
                         </button>
-                        <button class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>"
+                        <button class="btn btn_live <%= driver.status ? '' : 'disabled' %>"
                             onclick="initTrack('<%= JSON.stringify(driver.wayPoints) %>' , '<%= driver.id %>')">
                             <img src="../Public/assets/tracking.png" width="25px" height="25px">
                             <div class="text">

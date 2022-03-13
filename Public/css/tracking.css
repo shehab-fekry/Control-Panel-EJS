@@ -143,6 +143,7 @@
     font-weight: 800;
     background-color: #FFC107;
     color: #384850;
+    font-size: 16px;
   }
   
   .table .roow{
@@ -269,9 +270,9 @@
     height: 100%;
     outline: none;
     background-color: #fcfcfc;
+    font-size: 15px;
+
   }
-
-
 
   
   
