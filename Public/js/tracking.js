@@ -22,57 +22,7 @@ let state = {
 
 // ----------------------------------------------- Live Track -----------------------------------------------------
 
-
-// Creating Pusher channel connection
-// Pusher.logToConsole = true;
 pusher = new Pusher('d363addb971561dc7e96', {cluster: 'eu'});
-// let channel;
-// if(state.driverID == 0)
-// {
-    // Pusher.logToConsole = true;
-    // channel = pusher.subscribe('new_notify.' + state.driverID);
-    // channel.bind('Gizawy', async (data) => {
-    //     if (!state.mapLoaded) return
-        
-    //     let langLong = [data.latitude, data.longitude]
-    
-    //     // Styling the previous steps
-    //     if(state.locationIndex !== 0)
-    //     {
-    //         state.prevDiv = state.marker.getElement()
-    //         state.prevDiv.className = 'prevStep mapboxgl-marker mapboxgl-marker-anchor-center'
-    //     }
-        
-    //     // Drawing the current step
-    //     state.currentStep = document.createElement('div');
-    //     state.currentStep.classList = 'currentStep';
-    //     state.marker = new mapboxgl.Marker(state.currentStep).setLngLat(langLong).addTo(state.trackingMap);
-    
-    //     // Drwing the new current step
-    //     state.trackingMap.flyTo({
-    //         // These options control the ending camera position: centered at
-    //         // the target, at zoom level 9, and north up.
-    //         center: langLong,
-    //         zoom: 15,
-    //         bearing: 0,
-             
-    //         // These options control the flight curve, making it move
-    //         // slowly and zoom out almost completely before starting
-    //         // to pan.
-    //         speed: 0.7, // make the flying slow
-    //         curve: 1, // change the speed at which it zooms out
-             
-    //         // This can be any easing function: it takes a number between
-    //         // 0 and 1 and returns another number between 0 and 1.
-    //         easing: (t) => t,
-             
-    //         // this animation is considered essential with respect to prefers-reduced-motion
-    //         essential: true
-    //     })
-    //     state.locationIndex += 1
-    // });
-// }
-
 
 const initTrack = (wayPoints, driverID) => {
     state.mapLoaded = false
@@ -98,9 +48,7 @@ const initTrack = (wayPoints, driverID) => {
         container: document.getElementById('map'),
         style: 'mapbox://styles/shehab-fekry/cl0e4k50n002p14si2n2ctxy9',
         center: start,
-        // pitch: 60, // pitch in degrees
-        // bearing: -60, // bearing in degrees
-        zoom: 15
+        zoom: 13
         });
 
     // adding controls
@@ -210,7 +158,7 @@ const changeChannel = () => {
             // These options control the ending camera position: centered at
             // the target, at zoom level 9, and north up.
             center: langLong,
-            zoom: 15,
+            zoom: 13,
             bearing: 0,
             
             // These options control the flight curve, making it move
@@ -228,9 +176,22 @@ const changeChannel = () => {
         })
         state.locationIndex += 1
     })
-
-    console.log('changed')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -386,6 +347,31 @@ const optinmizeAPI = (wayPoints) => {
     curbString = curbString.slice(0, -1)
     return [curbString, wayPointString]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

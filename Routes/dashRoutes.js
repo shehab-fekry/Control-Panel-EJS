@@ -34,8 +34,12 @@ routes.get('/addParent', dashControllers.getaddParent)
 routes.get('/confirmEmail', dashControllers.getconfirmEmail)
 
 routes.get('/adminProfile', dashControllers.adminProfile)
+
 routes.get('/parentProfile', dashControllers.getParentProfile)
+
 routes.get('/driverProfile', dashControllers.getDriverProfile)
+
+routes.get('/editTrips', dashControllers.getEditTrips)
 
 routes.get('/school', dashControllers.getSchool)
 

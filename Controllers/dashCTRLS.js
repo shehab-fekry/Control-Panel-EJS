@@ -73,40 +73,34 @@ exports.getnewPassword = (req, res, next) => {
 
 exports.getupdateDriver = (req, res, next) => {
     res.render('updateDriver.ejs', {
-        
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getaddDriver = (req, res, next) => {
     res.render('addDriver.ejs', {
-      
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getupdateParent = (req, res, next) => {
     res.render('updateParent.ejs', {
-       
         pageTitle: 'Forget Password',
     })
 }
 
 exports.getaddParent = (req, res, next) => {
     res.render('addParent.ejs', {
-        
         pageTitle: 'Forget Password',
     })
 }
 exports.getParentProfile = (req, res, next) => {
     res.render('parentProfile.ejs', {
-        
         pageTitle: 'Forget Password',
     })
 }
 exports.getDriverProfile = (req, res, next) => {
     res.render('driverProfile.ejs', {
-        
         pageTitle: 'Forget Password',
     })
 }
@@ -127,6 +121,13 @@ exports.adminProfile = (req, res, next) => {
 exports.getSchool = (req, res, next) => {
     res.render('school.ejs', {
         pageTitle: 'School',
+    })
+}
+
+exports.getEditTrips = (req, res, next) => {
+    res.render('editTrips.ejs', {
+        Trips: [...data],
+        pageTitle: 'Edit Trips',
     })
 }
 

@@ -10,7 +10,7 @@
         <div class="table">
             <div class="roow head_row">
                 <div class="head_data">#</div>
-                <div class="head_data">Driver Name</div>
+                <div class="head_data">Driver</div>
                 <div class="head_data">Status</div>
                 <div class="head_data">Route</div>
             </div>
@@ -26,7 +26,6 @@
                         </div>
                     </div>
                     <div class="tdata">
-                        <!-- <button onclick="dataFetching('<%= JSON.stringify(driver.tracking) %>')">send data</button> -->
                         <button class="btn trackingBtn"
                             onclick="initPreview('<%= JSON.stringify(driver.wayPoints) %>')">
                             <img src="../Public/assets/preview.png" width="25px" height="25px">
@@ -40,11 +39,6 @@
                             <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
                             </div>
                         </button>
-                        <!-- <a class="btn btn_live <%= driver.status ? 'active' : 'disabled' %>" href="/dash/tracking/<%= driver.id%>">
-                            <img src="../Public/assets/tracking.png" width="25px" height="25px">
-                            Live
-                            <span class="<%= driver.status ? 'live-on' : 'live-off' %>"></span>
-                        </a> -->
                     </div>
                 </div>
             <% }) %>
@@ -52,10 +46,21 @@
 
         <div class="createTrip">
             <form class="createTripForm" action="">
-                <input type="text" placeholder="GeoFence Location">
-                <button class="btn trackingBtn" type="submit">Create</button>
+                <input oninput="verifyCreate()" id="location" type="text" placeholder="GeoFence Location">
+                <button id="createTripSubmit" disabled="true" class="btn trackingBtn btnHover" type="submit">Create</button>
             </form>
         </div>
+
+        <script>
+            verifyCreate = () => {
+                let field = document.getElementById('location').value
+
+                if(field == '')
+                document.getElementById('createTripSubmit').disabled = true
+                else
+                document.getElementById('createTripSubmit').disabled = false 
+            }
+        </script>
 </div>
 
 <!-- tracking.js  -->
